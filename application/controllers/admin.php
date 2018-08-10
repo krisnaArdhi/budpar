@@ -22,8 +22,28 @@ class Admin extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('ajaxcrud');
+		$this->load->view('admin/index');
 	}
+
+    public function posts(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->model('post_model');
+
+        $this->form_validation->set_rules('judul', 'Judul', 'required');
+        $this->form_validation->set_rules('artikel', 'Artikel', 'required');
+
+        if ($this->form_validation->run()===FALSE) {
+            $this->load->view('admin/posts');            
+        } else {
+            $this->post_model->create_post();
+            redirect('admin');
+        }
+    }
+
+    
+
+    
   public function wisata()
 	{
 		$data['wisata']  = $this->m_admin->wisata();
