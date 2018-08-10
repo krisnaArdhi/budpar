@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 		$data['wisata']  = $this->m_admin->wisata();
 		$data['wilayah']  = $this->m_admin->wilayah();
 
-		$this->load->view('admin/adminwisata',$data);
+		$this->load->view('admin/adminwisata');
 	}
 	public function wilayah()
 	{
@@ -113,7 +113,7 @@ class Admin extends CI_Controller {
 			 <tr>
 			 <td>'.$row->nama_wilayah.'</td>
 				<td class="text-right" ><a href="'.base_url().'admin/edit_wilayah/'.$row->id_wilayah.'"> <button class="btn btn-primary btn-sm">
-					Edit</button></a><a href="'.base_url().'admin/edit_wilayah/'.$row->id_wilayah.'"> <button class="btn btn-danger btn-sm">
+					Edit</button></a><a href="'.base_url().'admin/konfirm_delete_wilayah/'.$row->id_wilayah.'"> <button class="btn btn-danger btn-sm">
 						delete</button></a></td>
 
 			 </tr>
@@ -183,11 +183,52 @@ class Admin extends CI_Controller {
            $this->crud_model->m_admin($_POST["id_wilayah"]);
            echo 'Data Deleted';
       }
+			function konfirm_delete_wilayah($id_wilayah)
+		  {
+		    echo "<script>
+
+		    var txt;
+		    var r = confirm('Tekan OK untuk menghapus !');
+		    if (r == true) {
+		        window.location.href = '".base_url()."pinjaman/hapus_pinjaman/".$id_wilayah."';
+
+		    } else {
+		      window.location.href = '".base_url()."pinjaman/tampil_semua';
+		    }
+
+		</script>";
+
+		    // $data_pinjaman['datapinjaman']=$this->m_pinjaman->konfirm_hapus($id_pinjaman);
+		    // $this->load->view('konfirmhapuspinjaman',$data_pinjaman);
+		  }
 			function edit_wilayah()
 					{
-							 // $this->load->model("crud_model");
-							 $keluar= $this->input->post('delete');
-							 echo $keluar;
+						$id=$this->uri->segment(3);
+					  $data['wilayah']=$this->m_admin->edit_wilayah($id);
+					  $this->load->view('admin/editwilayah',$data);
+
+					}
+
+					function simpan_edit_wilayah()
+				 {
+					if (isset($_POST['mysubmit']))
+						{
+					$data = array(
+						'id_wilayah' => $this->input->post('id_wilayah'),
+					'nama_wilayah'     => $this->input->post('nama_wilayah')
+					);
+					 $hasil=$this->m_admin->simpan_edit_wilayah($data);
+					 if ($hasil){
+							 redirect('admin/wilayah');
+					 }else{
+						echo "Simpan data gagal";
+					 }
+					 echo "<br/>";
+					 echo anchor('admin/wilayah');
+					}
+					else{
+						$this->load->view('tambahpetugas');
+					}
 					}
 
 

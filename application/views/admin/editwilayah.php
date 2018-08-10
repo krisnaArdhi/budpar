@@ -241,10 +241,8 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
+                                <input class="au-input au-input--xl" type="text" name="search_text" id="search_text" placeholder="cari wilayah" />
+
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
@@ -416,17 +414,47 @@
                       <div class="row">
                           <div class="col-md-12">
                               <div class="overview-wrap">
-                                  <h2 class="title-1">Daftar Wilayah</h2>
-                                  <button class="au-btn au-btn-icon au-btn--blue"  data-toggle="modal" data-target="#contohModalKecil">
-                                      <i class="zmdi zmdi-plus"></i>Tambah</button>
+                                  <h2 class="title-1">Edit Wilayah</h2>
+
                               </div>
                           </div>
                       </div>
                         <div class="row m-t-25">
                           <div class="col-lg-12">
-                              <div class="table-responsive table--no-card m-b-40">
-                                <div id="result"></div>
-                              </div>
+                            <form action="<?php echo base_url();?>admin/simpan_edit_wilayah" method="post" class="">
+                            <div class="card">
+                                <div class="card-body card-block">
+                                        <div class="form-group">
+                                            <label for="nf-email" class=" form-control-label">Nama Wilayah</label>
+                                            <?php
+                                            if (empty($wilayah))
+                                            {
+                                              echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
+                                            }else
+                                            {
+                                               foreach ($wilayah as $isi)
+                                            {
+                                            ?>
+                                            <input type="text" id="street" name="nama_wilayah" class="form-control" value="<?php echo $isi['nama_wilayah'];?>">
+                                            <input type="text" id="street" name="id_wilayah" hidden class="form-control" value="<?php echo $isi['id_wilayah'];?>">
+
+                                            <?php
+                                  					 }}
+                                  					 ?>
+
+                                        </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" name="mysubmit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Simpan
+                                    </button>
+                                    <button type="reset" name="cancel" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Kembali
+                                    </button>
+                                </div>
+                            </div>
+                          </form>
+
                           </div>
                         </div>
 
@@ -437,68 +465,9 @@
         </div>
 
     </div>
-    <div class="modal fade" id="contohModalKecil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Tambah data wilayah</h4>
-            </div>
-            <div class="modal-body">
-              <form method="post" action="<?php echo base_url();?>admin/tambah_wilayah">
-              <div class="card">
-                  <div class="card-body card-block">
 
-                      <div class="form-group">
-                          <label for="street" class=" form-control-label">Nama Wilayah</label>
-                          <input type="text" id="street" name="nama_wilayah" placeholder="masukan lokasi wilayah" class="form-control">
-                      </div>
-                  </div>
-                  <div class="card-footer">
-                      <button type="submit" name="mysubmit" class="btn btn-primary btn-sm">
-                          <i class="fa fa-dot-circle-o"></i> Simpan
-                      </button>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                  </div>
-              </div>
-            </form>
-            </div>
-          </div>
-        </div>
-      </div>
 <?php include 'footer.php';?>
 </body>
 
 </html>
-<script>
-$(document).ready(function(){
-
- load_data();
-
- function load_data(query)
- {
-  $.ajax({
-   url:"<?php echo base_url(); ?>admin/fetch",
-   method:"POST",
-   data:{query:query},
-   success:function(data){
-    $('#result').html(data);
-   }
-  })
- }
-
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
- });
-});
-</script>
-
 <!-- end document-->

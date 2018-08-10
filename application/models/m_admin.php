@@ -18,6 +18,21 @@
            $query = $this->db->get('wilayah');
                return $query->result();
          }
+        function edit_wilayah($id_wilayah)
+         {
+           $this->db->where('id_wilayah',$id_wilayah);
+           $query = $this->db->get('wilayah');
+           return $query->result_array();
+         }
+         public function simpan_edit_wilayah($data)
+         {
+
+             $this->db->where('id_wilayah',$data['id_wilayah']);
+             $hasil=$this->db->update('wilayah',$data);
+
+           return $hasil;
+         }
+
          function fetch_data_wilayah($query)
          {
           $this->db->select("*");
