@@ -1,0 +1,9 @@
+change log
+admin :
+  wisata :
+    1.input
+    2.live search nama wisata
+
+  wilayah :
+      1.input
+      2.live search nama wilayah
