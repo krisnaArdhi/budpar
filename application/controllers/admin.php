@@ -5,7 +5,7 @@ class Admin extends CI_Controller{
         parent::__construct();
     }
 
-    public function pages($page = index){
+    public function pages($page = 'index'){
         if ( ! file_exists(APPPATH.'views/nimda/'.$page.'.php') ) {
             show_404();
         }
