@@ -4,6 +4,8 @@
 <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script> -->
 <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
 <?php include 'head.php';?>
+<link rel="stylesheet" href="<?php echo base_url()?>assets/summernote/summernote-bs4.css">
+<script src="<?php echo base_url()?>assets/summernote/summernote-bs4.js"></script>
 
         <!-- PAGE CONTAINER-->
         <div class="page-container">
@@ -199,6 +201,14 @@
                                     <div class="row form-group">
                                         <br> <br>
                                         <textarea id="editor" name="artikel" class="form-control col-md-12"></textarea>
+                                        <div id="summernote"></div>
+                                        <script>
+                                            $('#summernote').summernote({
+                                              placeholder: 'Hello bootstrap 4',
+                                              tabsize: 2,
+                                              height: 100
+                                            });
+                                        </script>
                                     </div>
                                     <button type="submit" class="btn btn-success">Buat Post</button>
                                 </div>
@@ -213,7 +223,6 @@
 
     </div>
 <?php include 'footer.php';?>
-<script>CKEDITOR.replace('editor');</script>
 </body>
 
 </html>
