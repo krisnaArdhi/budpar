@@ -13,14 +13,16 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
     <!-- Generated: 2018-04-16 09:29:05 +0200 -->
     <title>Homepage - tabler.github.io - a responsive, flat and full featured admin template</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-<script src="<?php echo site_url()?>assets/admin/assets/js/require.min.js"></script>
+    <script src="<?php echo site_url()?>assets/admin/assets/js/require.min.js"></script>
     <script>
       requirejs.config({
           baseUrl: '<?php echo base_url()?>assets/admin/'
       });
     </script>
+
     <!-- Dashboard Core -->
     <link href="<?php echo base_url()?>assets/admin/assets/css/dashboard.css" rel="stylesheet" />
     <script src="<?php echo base_url()?>assets/admin/assets/js/dashboard.js"></script>
@@ -31,5 +33,5 @@
     <link href="<?php echo base_url()?>assets/admin/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
     <script src="<?php echo base_url()?>assets/admin/assets/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
-<script src="<?php echo base_url()?>assets/admin/assets/plugins/input-mask/plugin.js"></script>
+    <script src="<?php echo base_url()?>assets/admin/assets/plugins/input-mask/plugin.js"></script>
  

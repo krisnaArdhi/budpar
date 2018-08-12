@@ -1,8 +1,18 @@
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
+
       <?php include APPPATH.'views/nimda/head.php';?>
-  </head>
+      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script>
+        requirejs.config({
+    paths: {
+        'quill': 'https://cdn.quilljs.com/1.3.6/quill'
+    }
+});
+    </script>
+
+       </head>
   <body class="">
     <div class="page">
       <div class="page-main">
@@ -34,7 +44,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="artikel">Isi</label>
-                                    <textarea class="form-control" name="artikel" cols="30" rows="10"></textarea>
+                                    <!-- <textarea id="summernote" class="form-control" name="artikel" cols="30" rows="10"></textarea> -->
+                                    <div id="editor"></div>
                                 </div>
                             </div>
                         </div>
@@ -112,5 +123,14 @@
         </div>
       </footer>
     </div>
+    <script>
+        requirejs(['quill'], function(Quill) {
+            var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+});
+    
+    </script>
   </body>
+
 <
