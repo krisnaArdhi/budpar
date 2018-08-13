@@ -17,13 +17,12 @@ class Post extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('judul','Judul','required');
         $this->form_validation->set_rules('artikel','Artikel','required');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('nimda/posts/create');
         } else{
-            $this->load->view('nimda/index');
+            echo $this->input->post('artikel');
         }
     }
 

@@ -3,14 +3,17 @@
   <head>
 
       <?php include APPPATH.'views/nimda/head.php';?>
-      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+
     <script>
         requirejs.config({
     paths: {
-        'quill': 'https://cdn.quilljs.com/1.3.6/quill'
+    'summernote' : 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4'
     }
 });
     </script>
+
 
        </head>
   <body class="">
@@ -44,7 +47,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="artikel">Isi</label>
-                                    <!-- <textarea id="summernote" class="form-control" name="artikel" cols="30" rows="10"></textarea> -->
+                                     <textarea id="summernote" class="form-control" name="artikel"></textarea>
                                     <div id="editor"></div>
                                 </div>
                             </div>
@@ -125,12 +128,14 @@
       </footer>
     </div>
     <script>
-        requirejs(['quill'], function(Quill) {
-            var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-});
     
+    </script>
+    <script>
+requirejs(['jquery','bootstrap', 'summernote'], function(){
+    $(document).ready(function(){
+        $('#summernote').summernote();
+    })
+});
     </script>
   </body>
 
