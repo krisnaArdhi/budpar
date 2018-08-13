@@ -31,7 +31,7 @@
                 <div class="col-12">
                     <?php echo validation_errors();?>
                     <?php $attributes = array('class' => 'card');?>
-                    <?php echo form_open('posts/create',$attributes);?>
+                    <?php echo form_open('post/create',$attributes);?>
                     <div class="card-header">
                         <h3 class="card-title">Buat Post</h3>
                     </div>
@@ -53,11 +53,12 @@
                     <div class="card-footer text-right">
                         <div class="d-flex">
                             <a class="btn btn-link" href="#">Batal</a>
-                            <button class="btn btn-primary ml-auto" type="submit" name="submit">Post</button>
+                            <!--<button class="btn btn-primary ml-auto" type="submit" name="submit">Post</button>-->
+                            <input type="submit" class="btn btn-primary ml-auto" name="submit" value="post">
                         </div>
                     </div>
+                    </form>
 
-                </div>
             </div>
             <!-- /#isi -->
           </div>

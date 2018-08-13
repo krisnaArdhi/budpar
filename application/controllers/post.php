@@ -23,7 +23,7 @@ class Post extends CI_Controller{
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('nimda/posts/create');
         } else{
-            success;
+            $this->load->view('nimda/index');
         }
     }
 
