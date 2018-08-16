@@ -34,7 +34,7 @@
                 <div class="col-12">
                     <?php echo validation_errors();?>
                     <?php $attributes = array('class' => 'card');?>
-                    <?php echo form_open('post/create',$attributes);?>
+                    <?php echo form_open_multipart('post/create',$attributes);?>
                     <div class="card-header">
                         <h3 class="card-title">Buat Post</h3>
                     </div>
@@ -49,6 +49,13 @@
                                     <label class="form-label" for="artikel">Isi</label>
                                      <textarea id="summernote" class="form-control" name="artikel"></textarea>
                                     <div id="editor"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label">Upload Gambar Header</div>
+                                    <div class="custom-file">
+                                        <input class="custom-file-input" type="file" name="headerpost">
+                                        <label class="custom-file-label">Pilih Gambar</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +140,9 @@
     <script>
 requirejs(['jquery','bootstrap', 'summernote'], function(){
     $(document).ready(function(){
-        $('#summernote').summernote();
+        $('#summernote').summernote({
+        height: 200
+    });
     })
 });
     </script>

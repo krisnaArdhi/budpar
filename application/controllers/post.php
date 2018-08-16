@@ -3,14 +3,15 @@
 class Post extends CI_Controller{
     function __construct(){
         parent::__construct();
+        $this->load->model('post_model');
+        $this->load->helper('url_helper');
     }
 
-    public function pages($page = index){
-        if ( ! file_exists(APPPATH.'views/nimda/'.$page.'.php') ) {
-            show_404();
-        }
+    public function index(){
+        $data['posts'] = $this->post_model->get_posts();
 
-        $this->load->view('nimda/'.$page);
+        $this->load->view('nimda/post',$data);
+
     }
 
     public function create(){
@@ -22,9 +23,12 @@ class Post extends CI_Controller{
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('nimda/posts/create');
         } else{
-            echo $this->input->post('artikel');
+            $this->post_model->create_post();
+            redirect('admin/post');
         }
     }
+
+
 
 }
 

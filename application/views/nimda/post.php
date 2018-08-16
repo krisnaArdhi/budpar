@@ -16,6 +16,23 @@
               </h1>
             </div>
             <!-- #isi -->
+            <div class="row row-cards row-deck">
+            <?php foreach ($posts as $post): ?>
+            <div class="col-lg-12">
+                <div class="card card-aside">
+                    testing
+                    <div class="card-body d-flex flex-column">
+                        <h4><?php echo $post['judul'];?></h4>
+                        <div>
+                            <?php echo $post['artikel'];?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach;?>
+
+
+            </div>
 
             <!-- /#isi -->
           </div>
