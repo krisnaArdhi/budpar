@@ -43,7 +43,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label" for="judul">Judul</label>
-                                    <input class="form-control" type="input" name="judul">
+                                    <input class="form-control" type="input" name="judul" autofocus="">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="artikel">Isi</label>

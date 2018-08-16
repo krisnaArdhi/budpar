@@ -11,18 +11,41 @@
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
-              <h1 class="page-title">
-                Blog components
-              </h1>
+              <div class="col-lg-8">
+                <h1 class="page-title">
+                    Posts
+                </h1>
+              </div>
+              <div class="col-lg-4 page-options text-right">
+                  <a href="<?php echo base_url()?>admin/post/create">Create Post <i class="fe fe-plus"></i></a>
+              </div>
             </div>
             <!-- #isi -->
             <div class="row row-cards row-deck">
             <?php foreach ($posts as $post): ?>
             <div class="col-lg-12">
-                <div class="card card-aside">
-                    testing
+                <div class="card card-aside" style="min-height:200px">
+                    <div class="card-aside-column" style="background-image: url(https://edtech4beginnerscom.files.wordpress.com/2017/08/nhimlzql.jpg)"></div>
                     <div class="card-body d-flex flex-column">
-                        <h4><?php echo $post['judul'];?></h4>
+                        <div class="alert alert-success alert-dismissible" id="del<?php echo $post['id'];?>" style="display:none">
+                            <h4>Some Message</h4>
+                            <p>
+                            Delete post: <?php echo $post['judul'];?>?
+                            </p>
+                            <div class="btn-list">
+                              <?php echo form_open('post/delete/'.$post['id']);?>
+                                  <input class="btn btn-danger" type="submit" value="Delete">
+                                  <button class="btn btn-secondary ml-2" data-dismiss="alert" type="button">Batal</button>
+                              </form>
+                            </div>
+                        </div>
+                        <div class="card-header">
+                            <h4><?php echo $post['judul'];?></h4>
+                            <div class="card-options">
+                                <a class="btn btn-primary btn-sm" href="#">Edit Post</a>
+                                <button class="btn btn-danger btn-sm ml-2" onclick="deleteConfirm('<?php echo $post['id'];?>')">Delete</button>
+                            </div>
+                        </div>
                         <div>
                             <?php echo $post['artikel'];?>
                         </div>
@@ -30,10 +53,7 @@
                 </div>
             </div>
             <?php endforeach;?>
-
-
             </div>
-
             <!-- /#isi -->
           </div>
         </div>
@@ -98,5 +118,10 @@
         </div>
       </footer>
     </div>
+    <script>
+function deleteConfirm(id){
+    document.getElementById("del"+id).style.display = "block";
+}
+    </script>
   </body>
 </html>
