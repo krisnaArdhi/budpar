@@ -27,7 +27,7 @@ class Post extends CI_Controller{
         } else{
             $config['upload_path'] = './assets/images/posts/';
             $config['allowed_types'] = 'gif|jpg|png|';
-            $config['max_size'] = '512';
+            $config['max_size'] = '2048';
             
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload()) {
@@ -61,13 +61,36 @@ class Post extends CI_Controller{
     }
 
     public function update(){
-        $this->post_model->update_post();
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('judul','Judul','required');
+        $this->form_validation->set_rules('artikel','Artikel','required');
+
+        if ($this->form_validation->run()===TRUE){
+            $config['upload_path'] = './assets/images/posts/';
+            $config['allowed_types'] = 'gif|jpg|png|';
+            $config['max_size'] = '2048';
+            
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload()) {
+                $errors = array('error' => $this->upload->display_errors());
+                $post_image = 'noimage.jpg';
+                
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $post_image = $_FILES['userfile']['name'];                
+            } 
+
+
+        $this->post_model->update_post($post_image);
         redirect('admin/post'); 
+        }
+
+
+
+
     }
-
-
-
-
 }
 
 
