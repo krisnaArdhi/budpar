@@ -134,17 +134,44 @@
       </footer>
     </div>
     <script>
-    
-    </script>
-    <script>
 requirejs(['jquery','bootstrap', 'summernote'], function(){
     $(document).ready(function(){
         $('#summernote').summernote({
-        height: 200
+        height: 200,
+            callbacks: {
+            onImageUpload: function(files){
+                uploadFile(files[0]);
+            }
+        }
     });
+        //ada kurungkurawal tutupkurung
+    function uploadFile(file){
+        data = new FormData();
+        data.append("file",file);
+    
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "<?php echo base_url();?>admin/post/textImage",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(url){
+                console.log(url);
+                $('#summernote').summernote("insertImage", url);
+            }
+
+    });
+}
+
     })
 });
     </script>
+
+    <script type="text/javascript">
+
+    </script>
+
   </body>
 
 <
