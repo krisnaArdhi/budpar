@@ -35,14 +35,24 @@ class Post_model extends CI_Model {
         return true;
     }
 
-    public function update_post(){
+    public function update_post($post_image){
         $uri = url_title($this->input->post('judul'));
-
-        $data = array(
+        
+        if ($post_image === 'noimage.jpg') {
+         $data = array(
             'judul' => $this->input->post('judul'),
             'uri' => $uri,
-            'artikel' => $this->input->post('artikel')
+            'artikel' => $this->input->post('artikel',FALSE)
         );
+   
+        } else {
+            $data = array(
+                'judul' => $this->input->post('judul'),
+                'uri' => $uri,
+                'artikel' => $this->input->post('artikel',FALSE),
+                'post_image' => $post_image 
+            );
+        }
 
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update('posts', $data);

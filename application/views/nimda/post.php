@@ -17,7 +17,7 @@
                 </h1>
               </div>
               <div class="col-lg-4 page-options text-right">
-                  <a href="<?php echo base_url()?>admin/post/create">Create Post <i class="fe fe-plus"></i></a>
+                  <a class="btn btn-success btn-md" href="<?php echo base_url()?>admin/post/create">Buat Post  <i class="fe fe-plus"></i></a>
               </div>
             </div>
             <!-- #isi -->
@@ -26,7 +26,7 @@
             <div class="col-lg-12">
                 <div class="card card-aside" style="min-height:300px">
                 <?php if ($post['post_image'] !== 'noimage.jpg') : ?>
-                    <div class="card-aside-column" style="background-image: url(<?php echo site_url();?>assets/images/posts/<?php echo $post['post_image'];?>); height:auto"></div>
+                <div class="card-aside-column" style="background-image: url(<?php echo site_url();?>assets/images/posts/<?php echo $post['post_image']?>); height:auto"></div>
                 <?php endif;?>
                     <div class="card-body d-flex flex-column">
                         <div class="alert alert-warning alert-dismissible" id="del<?php echo $post['id'];?>" style="display:none">
