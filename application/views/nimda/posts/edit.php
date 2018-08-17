@@ -24,9 +24,6 @@
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
-              <h1 class="page-title">
-                Blog components
-              </h1>
             </div>
             <!-- #isi -->
 
@@ -36,7 +33,7 @@
                     <?php $attributes = array('class' => 'card');?>
                     <?php echo form_open_multipart('post/update',$attributes);?>
                     <div class="card-header">
-                        <h3 class="card-title">Buat Post</h3>
+                        <h3 class="card-title">Edit Post</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -62,9 +59,9 @@
                     </div>
                     <div class="card-footer text-right">
                         <div class="d-flex">
-                            <a class="btn btn-link" href="#">Batal</a>
+                            <a class="btn btn-link" href="<?php echo base_url();?>admin/post">Batal</a>
                             <!--<button class="btn btn-primary ml-auto" type="submit" name="submit">Post</button>-->
-                            <input type="submit" class="btn btn-primary ml-auto" name="submit" value="post">
+                            <input type="submit" class="btn btn-primary ml-auto" name="submit" value="Update">
                         </div>
                     </div>
                     </form>

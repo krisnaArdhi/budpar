@@ -16,13 +16,14 @@ class Post_model extends CI_Model {
     }
 
 
-    public function create_post() {
+    public function create_post($post_image) {
         $uri = url_title($this->input->post('judul'));
 
         $data = array(
             'judul' => $this->input->post('judul'),
             'uri' => $uri,
-            'artikel' => $this->input->post('artikel')
+            'artikel' => $this->input->post('artikel',FALSE),
+            'post_image' => $post_image 
         );
 
         return $this->db->insert('posts', $data);

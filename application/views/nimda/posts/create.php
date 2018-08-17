@@ -53,8 +53,7 @@
                                 <div class="form-group">
                                     <div class="form-label">Upload Gambar Header</div>
                                     <div class="custom-file">
-                                        <input class="custom-file-input" type="file" name="headerpost">
-                                        <label class="custom-file-label">Pilih Gambar</label>
+                                        <input type="file" name="userfile">
                                     </div>
                                 </div>
                             </div>
