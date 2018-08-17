@@ -1,58 +1,74 @@
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-      <?php include 'head.php';?>
-  </head>
+
+      <?php include APPPATH.'views/nimda/head.php';?>
+
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+
+    <script>
+        requirejs.config({
+    paths: {
+    'summernote' : 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4'
+    }
+});
+    </script>
+
+
+       </head>
   <body class="">
     <div class="page">
       <div class="page-main">
-          <?php include 'header.php';?> 
-          <?php include 'navbar.php';?> 
+          <?php include APPPATH.'views/nimda/header.php';?> 
+          <?php include APPPATH.'views/nimda/navbar.php';?> 
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
-              <div class="col-lg-8">
-                <h1 class="page-title">
-                    Posts
-                </h1>
-              </div>
-              <div class="col-lg-4 page-options text-right">
-                  <a href="<?php echo base_url()?>admin/post/create">Create Post <i class="fe fe-plus"></i></a>
-              </div>
+              <h1 class="page-title">
+                Blog components
+              </h1>
             </div>
             <!-- #isi -->
-            <div class="row row-cards row-deck">
-            <?php foreach ($posts as $post): ?>
-            <div class="col-lg-12">
-                <div class="card card-aside" style="min-height:200px">
-                    <div class="card-aside-column" style="background-image: url(https://edtech4beginnerscom.files.wordpress.com/2017/08/nhimlzql.jpg)"></div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="alert alert-warning alert-dismissible" id="del<?php echo $post['id'];?>" style="display:none">
-                            <h4>Some Message</h4>
-                            <p>
-                            Delete post: <?php echo $post['judul'];?>?
-                            </p>
-                            <div class="btn-list">
-                              <?php echo form_open('post/delete/'.$post['id']);?>
-                                  <input class="btn btn-danger" type="submit" value="Delete">
-                                  <button class="btn btn-secondary ml-2" data-dismiss="alert" type="button">Batal</button>
-                              </form>
+
+            <div class="row">
+                <div class="col-12">
+                    <?php echo validation_errors();?>
+                    <?php $attributes = array('class' => 'card');?>
+                    <?php echo form_open_multipart('post/update',$attributes);?>
+                    <div class="card-header">
+                        <h3 class="card-title">Buat Post</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="<?php echo $post['id'];?>">
+                                    <label class="form-label" for="judul">Judul</label>
+                                    <input class="form-control" type="input" name="judul" value="<?php echo $post['judul'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="artikel">Isi</label>
+                                    <textarea id="summernote" class="form-control" name="artikel"><?php echo $post['artikel'];?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label">Upload Gambar Header</div>
+                                    <div class="custom-file">
+                                        <input class="custom-file-input" type="file" name="headerpost">
+                                        <label class="custom-file-label">Pilih Gambar</label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-header">
-                            <h4><?php echo $post['judul'];?></h4>
-                            <div class="card-options">
-                                <a class="btn btn-primary btn-sm" href="<?php echo base_url()?>admin/post/edit/<?php echo $post['uri'];?>">Edit Post</a>
-                                <button class="btn btn-danger btn-sm ml-2" onclick="deleteConfirm('<?php echo $post['id'];?>')">Delete</button>
-                            </div>
-                        </div>
-                        <div>
-                            <?php echo $post['artikel'];?>
                         </div>
                     </div>
-                </div>
-            </div>
-            <?php endforeach;?>
+                    <div class="card-footer text-right">
+                        <div class="d-flex">
+                            <a class="btn btn-link" href="#">Batal</a>
+                            <!--<button class="btn btn-primary ml-auto" type="submit" name="submit">Post</button>-->
+                            <input type="submit" class="btn btn-primary ml-auto" name="submit" value="post">
+                        </div>
+                    </div>
+                    </form>
+
             </div>
             <!-- /#isi -->
           </div>
@@ -119,9 +135,17 @@
       </footer>
     </div>
     <script>
-function deleteConfirm(id){
-    document.getElementById("del"+id).style.display = "block";
-}
+    
+    </script>
+    <script>
+requirejs(['jquery','bootstrap', 'summernote'], function(){
+    $(document).ready(function(){
+        $('#summernote').summernote({
+        height: 200
+    });
+    })
+});
     </script>
   </body>
-</html>
+
+<

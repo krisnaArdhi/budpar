@@ -37,6 +37,20 @@ class Post extends CI_Controller{
 
     }
 
+    public function edit($uri){
+        $this->load->helper('form');
+        $data['post'] = $this->post_model->get_posts($uri);
+
+        $this->load->view('nimda/posts/edit',$data);
+
+    }
+
+    public function update(){
+        $this->post_model->update_post();
+        redirect('admin/post'); 
+    }
+
+
 
 
 }
