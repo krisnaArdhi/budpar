@@ -103,7 +103,7 @@
 									<div class="desc">
 										<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
 										<h3><a href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri;?>"><?php echo $isi->judul;?></a></h3>
-										<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+										<p><?php echo $isi->artikel;?></p>
 									</div>
 								</div>
 							</div>

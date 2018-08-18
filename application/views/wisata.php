@@ -64,7 +64,6 @@
 						<li><a href="<?php base_url()?>contact">Contact</a></li>
 					</ul>
 				</nav>
-
 				<div class="colorlib-footer">
 				<ul>
 						<li><a href="#"><i class="icon-facebook2"></i></a></li>
@@ -86,15 +85,7 @@
 							</div>
 						</div>
 						<div class="row row-bottom-padded-md">
-							<?php
-							if (empty($wisata))
-							{
-								echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
-							}else
-							{
-								 foreach ($wisata as $isi)
-							{
-							?>
+							<?php foreach ($data->result() as $isi) :?>
 							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
 								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar;?>);">
 									<div class="desc">
@@ -110,21 +101,12 @@
 									</div>
 								</div>
 							</div>
-							<?php
-							 }}
-							 ?>
+							<?php endforeach; ?>
 						</div>
 						<div class="row">
-							<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-								<ul class="pagination">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">&raquo;</a></li>
-								</ul>
-							</div>
+						
+								<?php echo $pagination; ?>
+
 						</div>
 					</div>
 				</div>

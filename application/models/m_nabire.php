@@ -6,6 +6,11 @@
    {
     parent::__construct();
    }
+
+   function get_wisata_list($limit, $start){
+        $query = $this->db->get('wisata', $limit, $start);
+        return $query;
+    }
    function jml_artikel()
    {
      $query = $this->db->get('posts');
