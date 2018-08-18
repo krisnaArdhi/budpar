@@ -22,7 +22,8 @@ class Blog extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('index');
+		$data['post']= $this->m_nabire->post();
+		$this->load->view('blog',$data);
 	}
 
 

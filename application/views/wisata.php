@@ -57,20 +57,16 @@
 				<h1 id="colorlib-logo"><a href="index.html">Balay</a></h1>
 				<nav id="colorlib-main-menu" role="navigation">
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="work.html">Project</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="services.html">Services</a></li>
-						<li class="colorlib-active"><a href="blog.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="<?php base_url()?>welcome">Home</a></li>
+						<li  class="colorlib-active"><a href="<?php base_url()?>wisata">Wisata Nabire</a></li>
+						<li><a href="<?php base_url()?>about">Tentang Kami</a></li>
+						<li><a href="<?php base_url()?>blog">Seputar Nabire</a></li>
+						<li><a href="<?php base_url()?>contact">Contact</a></li>
 					</ul>
 				</nav>
 
 				<div class="colorlib-footer">
-					<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span> <span>Demo Images: <a href="http://nothingtochance.co/" target="_blank">nothingtochance.co</a></span></small></p>
-							<ul>
+				<ul>
 						<li><a href="#"><i class="icon-facebook2"></i></a></li>
 						<li><a href="#"><i class="icon-twitter2"></i></a></li>
 						<li><a href="#"><i class="icon-instagram"></i></a></li>
