@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Blog extends CI_Controller {
 	function __construct(){
  parent::__construct();
  $this->load->model('m_nabire');
@@ -25,14 +25,16 @@ class Welcome extends CI_Controller {
 		$this->load->view('index');
 	}
 
-	public function Hotel()
+
+
+	public function artikel()
 	{
-		$this->load->view('hotel');
-	}
-	public function berita()
-	{
-		$data['post']= $this->m_nabire->post();
-		$this->load->view('blog',$data);
+		$uri= $this->uri->segment('3');
+		$data['post']= $this->m_nabire->data_post($uri);
+		$data['jml_artikel']= $this->m_nabire->jml_artikel();
+		$data['jml_wisata']= $this->m_nabire->jml_wisata();
+
+		$this->load->view('artikel',$data);
 	}
 
 

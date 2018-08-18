@@ -23,7 +23,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> -->
 
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/awal/css/animate.css">
@@ -66,58 +66,64 @@
 					</ul>
 				</nav>
 
-				<div class="colorlib-footer">
-					<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span> <span>Demo Images: <a href="http://nothingtochance.co/" target="_blank">nothingtochance.co</a></span></small></p>
-							<ul>
-						<li><a href="#"><i class="icon-facebook2"></i></a></li>
-						<li><a href="#"><i class="icon-twitter2"></i></a></li>
-						<li><a href="#"><i class="icon-instagram"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-					</ul>
-				</div>
-
 			</aside>
 
 			<div id="colorlib-main">
 
-				<div class="colorlib-blog">
+				<div class="colorlib-about">
 					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Blog</span>
-								<h2 class="colorlib-heading">Read Blog</h2>
-							</div>
-						</div>
-						<div class="row">
-
-						<?php
-						if (empty($post))
-						{
-							echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
-						}else
-						{
-							 foreach ($post as $isi)
-						{
-						?>
-							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="blog-entry">
-									<a href="blog.html" class="blog-img"><img src="<?php echo base_url()?>assets/awal/images/blog-1.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-									<div class="desc">
-										<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-										<h3><a href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri;?>"><?php echo $isi->judul;?></a></h3>
-										<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-									</div>
+						<div class="row row-bottom-padded-md">
+							<?php
+							if (empty($post))
+							{
+								echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
+							}else
+							{
+								 foreach ($post as $isi)
+							{
+							?>
+							<div class="col-md-6">
+								<div class="about-img animate-box" data-animate-effect="fadeInLeft" style="background-image: url(<?php echo base_url();?>assets/awal/images/img_bg_2.jpg);">
 								</div>
+							</div>
+							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+								<div class="about-desc">
+									<span class="heading-meta">Seputar Nabire</span>
+									<span><small><?php echo $isi->created_at;?></small></span>
+
+									<h2 class="colorlib-heading"><?php echo $isi->judul;?></h2>
+									<?php echo $isi->artikel;?>
+									</div>
+
 							</div>
 							<?php
 							 }}
 							 ?>
 						</div>
 
+					</div>
+				</div>
 
 
+				<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(images/cover_bg_1.jpg);" data-stellar-background-ratio="0.5">
+					<div class="overlay"></div>
+					<div class="colorlib-narrow-content">
+						<div class="row">
+						</div>
+						<div class="row">
+							<div class="col-md-6 text-center animate-box">
+								<span class="icon"><i class="flaticon-architect-with-helmet"></i></span>
+								<span class="colorlib-counter js-counter" data-from="0" data-to="<?php echo $jml_artikel;?>" data-speed="5000" data-refresh-interval="50"></span>
+								<span class="colorlib-counter-label">Artikel</span>
+							</div>
+							<div class="col-md-6 text-center animate-box">
+								<span class="icon"><i class="flaticon-skyline"></i></span>
+
+								<span class="colorlib-counter js-counter" data-from="0" data-to="<?php echo $jml_wisata;?>" data-speed="5000" data-refresh-interval="50"></span>
+								<span class="colorlib-counter-label">Wisata</span>
+							</div>
+
+						</div>
 					</div>
 				</div>
 

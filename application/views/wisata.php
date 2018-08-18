@@ -81,33 +81,36 @@
 			</aside>
 
 			<div id="colorlib-main">
-
-				<div class="colorlib-blog">
+				<div class="colorlib-work">
 					<div class="colorlib-narrow-content">
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Blog</span>
-								<h2 class="colorlib-heading">Read Blog</h2>
+								<span class="heading-meta">Dinas Pariwisata Kab.Nabire</span>
+								<h2 class="colorlib-heading">Daftar Wisata Kab.nabire</h2>
 							</div>
 						</div>
-						<div class="row">
-
-						<?php
-						if (empty($post))
-						{
-							echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
-						}else
-						{
-							 foreach ($post as $isi)
-						{
-						?>
-							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="blog-entry">
-									<a href="blog.html" class="blog-img"><img src="<?php echo base_url()?>assets/awal/images/blog-1.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+						<div class="row row-bottom-padded-md">
+							<?php
+							if (empty($wisata))
+							{
+								echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
+							}else
+							{
+								 foreach ($wisata as $isi)
+							{
+							?>
+							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar;?>);">
 									<div class="desc">
-										<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
-										<h3><a href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri;?>"><?php echo $isi->judul;?></a></h3>
-										<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+										<div class="con">
+											<h3><a href="work.html"><?php echo $isi->nama_wisata;?></a></h3>
+											<span><?php echo $isi->keterangan;?></span>
+											<p class="icon">
+												<span><a href="#"><i class="icon-share3"></i></a></span>
+												<span><a href="#"><i class="icon-eye"></i> 100</a></span>
+												<span><a href="#"><i class="icon-heart"></i> 49</a></span>
+											</p>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -115,9 +118,18 @@
 							 }}
 							 ?>
 						</div>
-
-
-
+						<div class="row">
+							<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+								<ul class="pagination">
+									<li class="disabled"><a href="#">&laquo;</a></li>
+									<li class="active"><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">&raquo;</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 
