@@ -86,10 +86,21 @@ class Post extends CI_Controller{
         $this->post_model->update_post($post_image);
         redirect('admin/post'); 
         }
+    }
 
-
-
-
+    public function textImage(){
+        if(isset($_FILES["file"]["name"])){
+          $config['upload_path'] = './assets/images/posts/textImg/';
+          $config['allowed_types'] = 'jpg|jpeg|png|gif';
+          $this->load->library('upload', $config);
+          if(!$this->upload->do_upload('file')){
+              $this->upload->display_errors();
+              return FALSE;
+          } else{
+              $this->upload->data();
+              echo base_url().'assets/images/posts/textImg/'.$_FILES['file']['name'];
+          }
+        }
     }
 }
 
