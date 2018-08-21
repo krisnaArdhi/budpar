@@ -56,11 +56,11 @@
 			<h1 id="colorlib-logo"><a href="index.html">Balay</a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><a href="<?php base_url()?>welcome">Home</a></li>
-					<li><a href="<?php base_url()?>wisata">Wisata Nabire</a></li>
-					<li><a href="<?php base_url()?>about">Tentang Kami</a></li>
-					<li><a href="<?php base_url()?>blog">Seputar Nabire</a></li>
-					<li class="colorlib-active"><a href="<?php base_url()?>contact">Contact</a></li>
+					<li><a href="<?php echo base_url()?>welcome">Home</a></li>
+					<li><a href="<?php echo base_url();?>wisata">Wisata Nabire</a></li>
+					<li><a href="<?php echo base_url();?>about">Tentang Kami</a></li>
+					<li><a href="<?php echo base_url();?>blog">Seputar Nabire</a></li>
+					<li class="colorlib-active"><a href="<?php echo base_url();?>contact">Contact</a></li>
 				</ul>
 			</nav>
 
@@ -125,9 +125,6 @@
 											<input type="text" class="form-control" placeholder="Email">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Subject">
-										</div>
-										<div class="form-group">
 											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
 										</div>
 										<div class="form-group">
@@ -142,24 +139,9 @@
 				</div>
 			</div>
 
-		
 
-			<div id="get-in-touch" class="colorlib-bg-color">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<h2>Get in Touch!</h2>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<p class="colorlib-lead">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-							<p><a href="#" class="btn btn-primary btn-learn">Contact me!</a></p>
-						</div>
 
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 

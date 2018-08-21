@@ -65,14 +65,15 @@ class Wisata extends CI_Controller {
 
 
 
-	public function artikel()
+	public function content()
 	{
 		$uri= $this->uri->segment('3');
-		$data['wisata']= $this->m_nabire->wisata();
+		$data['wisata']= $this->m_nabire->content_wisata($uri);
 		$data['jml_artikel']= $this->m_nabire->jml_artikel();
 		$data['jml_wisata']= $this->m_nabire->jml_wisata();
 
-		$this->load->view('wisata',$data);
+
+		$this->load->view('content_wisata',$data);
 	}
 
 

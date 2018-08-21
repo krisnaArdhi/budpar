@@ -57,11 +57,11 @@
 				<h1 id="colorlib-logo"><a href="index.html">Balay</a></h1>
 				<nav id="colorlib-main-menu" role="navigation">
 					<ul>
-						<li><a href="<?php base_url()?>welcome">Home</a></li>
-						<li><a href="<?php base_url()?>wisata">Wisata Nabire</a></li>
-						<li><a href="<?php base_url()?>about">Tentang Kami</a></li>
-						<li class="colorlib-active"><a href="<?php base_url()?>blog">Seputar Nabire</a></li>
-						<li><a href="<?php base_url()?>contact">Contact</a></li>
+						<li><a href="<?php echo base_url()?>welcome">Home</a></li>
+						<li><a href="<?php echo base_url()?>wisata">Wisata Nabire</a></li>
+						<li><a href="<?php echo base_url()?>about">Tentang Kami</a></li>
+						<li class="colorlib-active"><a href="<?php echo base_url()?>blog">Seputar Nabire</a></li>
+						<li><a href="<?php echo base_url()?>contact">Contact</a></li>
 					</ul>
 				</nav>
 
@@ -103,7 +103,10 @@
 									<div class="desc">
 										<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
 										<h3><a href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri;?>"><?php echo $isi->judul;?></a></h3>
-										<p><?php echo $isi->artikel;?></p>
+										<p><?php echo word_limiter($isi->artikel,30);?></p>
+										<p class="icon" >
+											<span><a style="color:black;" href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri?>"><i class="icon-eye"></i> More...</a></span>
+										</p>
 									</div>
 								</div>
 							</div>
@@ -121,13 +124,13 @@
 					<div class="colorlib-narrow-content">
 						<div class="row">
 							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<h2>Get in Touch!</h2>
+								<h2>For more information ?</h2>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<p class="colorlib-lead">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								<p><a href="#" class="btn btn-primary btn-learn">Contact me!</a></p>
+								<p class="colorlib-lead">don't hesitate to contact us</p>
+								<p><a href="<?php echo base_url()?>contact" class="btn btn-primary btn-learn">Contact us!</a></p>
 							</div>
 
 						</div>

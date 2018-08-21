@@ -22,20 +22,7 @@ class Contact extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['wisata']= $this->m_nabire->wisata();
 		$this->load->view('contact');
-	}
-
-
-
-	public function artikel()
-	{
-		$uri= $this->uri->segment('3');
-		$data['wisata']= $this->m_nabire->wisata();
-		$data['jml_artikel']= $this->m_nabire->jml_artikel();
-		$data['jml_wisata']= $this->m_nabire->jml_wisata();
-
-		$this->load->view('wisata',$data);
 	}
 
 

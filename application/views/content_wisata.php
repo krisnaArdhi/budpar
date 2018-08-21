@@ -23,7 +23,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> -->
 
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/awal/css/animate.css">
@@ -58,52 +58,88 @@
 				<nav id="colorlib-main-menu" role="navigation">
 					<ul>
 						<li><a href="<?php echo base_url()?>welcome">Home</a></li>
-						<li  class="colorlib-active"><a href="<?php echo base_url();?>wisata">Wisata Nabire</a></li>
-						<li><a href="<?php echo base_url();?>about">Tentang Kami</a></li>
-						<li><a href="<?php echo base_url();?>blog">Seputar Nabire</a></li>
-						<li><a href="<?php echo base_url();?>contact">Contact</a></li>
+						<li class="colorlib-active"><a href="<?php echo base_url()?>wisata">Wisata Nabire</a></li>
+						<li><a href="<?php echo base_url()?>about">Tentang Kami</a></li>
+						<li><a href="<?php echo base_url()?>blog">Seputar Nabire</a></li>
+						<li><a href="<?php echo base_url()?>contact">Contact</a></li>
 					</ul>
 				</nav>
-				<div class="colorlib-footer">
-				<ul>
-						<li><a href="#"><i class="icon-facebook2"></i></a></li>
-						<li><a href="#"><i class="icon-twitter2"></i></a></li>
-						<li><a href="#"><i class="icon-instagram"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-					</ul>
-				</div>
 
 			</aside>
 
 			<div id="colorlib-main">
-				<div class="colorlib-work">
+
+				<div class="colorlib-about">
 					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Dinas Pariwisata Kab.Nabire</span>
-								<h2 class="colorlib-heading">Daftar Wisata Kab.nabire</h2>
+						<div class="row row-bottom-padded-md">
+							<?php
+							if (empty($wisata))
+							{
+								echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
+							}else
+							{
+								 foreach ($wisata as $isi)
+							{
+							?>
+							<div class="col-md-6">
+								<div class="about-img animate-box" data-animate-effect="fadeInLeft" style="background-image: url(<?php echo base_url();?>assets/awal/images/<?php echo $isi->gambar;?>);">
+								</div>
 							</div>
+							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+								<div class="about-desc">
+									<span class="heading-meta">Wisata Nabire</span>
+
+									<h2 class="colorlib-heading"><?php echo $isi->nama_wisata;?></h2>
+									<?php echo $isi->keterangan;?>
+									</div>
+
+							</div>
+							<?php
+							 }}
+							 ?>
 						</div>
 						<div class="row row-bottom-padded-md">
-							<?php foreach ($data->result() as $isi) :?>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+							<?php foreach ($wisata as $isi) :?>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
 								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar;?>);">
-									<div class="desc">
-										<div class="con">
-											<h3><a href="work.html"><?php echo $isi->nama_wisata;?></a></h3>
-											<span><?php echo word_limiter($isi->keterangan,30);?></span>
-											<p class="icon">
-												<span><a href="<?php echo base_url()?>wisata/content/<?php echo $isi->uri?>"><i class="icon-eye"></i> More...</a></span>
-											</p>
-										</div>
-									</div>
+								</div>
+							</div>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar2;?>);">
+								</div>
+							</div>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar3;?>);">
+								</div>
+							</div>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar4;?>);">
 								</div>
 							</div>
 							<?php endforeach; ?>
 						</div>
-						<div class="row">
 
-								<?php echo $pagination; ?>
+					</div>
+				</div>
+
+
+				<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(images/cover_bg_1.jpg);" data-stellar-background-ratio="0.5">
+					<div class="overlay"></div>
+					<div class="colorlib-narrow-content">
+						<div class="row">
+						</div>
+						<div class="row">
+							<div class="col-md-6 text-center animate-box">
+								<span class="icon"><i class="flaticon-architect-with-helmet"></i></span>
+								<span class="colorlib-counter js-counter" data-from="0" data-to="<?php echo $jml_artikel;?>" data-speed="5000" data-refresh-interval="50"></span>
+								<span class="colorlib-counter-label"><a href="<?php echo base_url()?>wisata">Artikel</a></span>
+							</div>
+							<div class="col-md-6 text-center animate-box">
+								<span class="icon"><i class="flaticon-skyline"></i></span>
+
+								<span class="colorlib-counter js-counter" data-from="0" data-to="<?php echo $jml_wisata;?>" data-speed="5000" data-refresh-interval="50"></span>
+								<span class="colorlib-counter-label"><a href="<?php echo base_url()?>wisata">Wisata</a></span>
+							</div>
 
 						</div>
 					</div>

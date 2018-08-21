@@ -33,6 +33,19 @@
        $query = $this->db->get('wisata');
        return $query->result();
      }
+     function tampil_wisata()
+     // nampilin data slide wisata di index
+      {
+        $this->db->like('tampil',"1");
+        $query = $this->db->get('wisata');
+        return $query->result();
+      }
+     function content_wisata($uri)
+      {
+        $this->db->where('uri',$uri);
+        $query = $this->db->get('wisata');
+        return $query->result();
+      }
     function data_post($uri)
     {
 
