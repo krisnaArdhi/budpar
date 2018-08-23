@@ -42,7 +42,7 @@
      function tampil_wisata()
      // nampilin data slide wisata di index
       {
-        $this->db->like('tampil',"1");
+        $this->db->where('tampil',"tampil");
         $query = $this->db->get('wisata');
         return $query->result();
       }

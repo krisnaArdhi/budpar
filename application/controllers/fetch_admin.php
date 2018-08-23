@@ -163,6 +163,7 @@ class Fetch_admin extends CI_Controller {
 			 <tr>
 				<th>Wisata</th>
 				<th>Wilayah</th>
+				<th>Status</th>
 				<th></th>
 
 
@@ -176,9 +177,11 @@ class Fetch_admin extends CI_Controller {
 			 <tr>
 				<td>'.$row->nama_wisata.'</td>
 				<td>'.$row->nama_wilayah.'</td>
-				<td class="text-right" ><a href="'.base_url().'admin/edit_wilayah/'.$row->id_wisata.'"> <button class="btn btn-primary btn-sm">
-					Edit</button></a><a href="'.base_url().'admin/delete_wilayah/'.$row->id_wisata.'"> <button class="btn btn-danger btn-sm" name="delete" value="'.$row->id_wisata.'">
-						delete</button></a></td>
+				<td><a href="'.base_url().'admin/edit_wilayah/'.$row->id_wisata.'"> <button class="btn btn-primary btn-sm">'.$row->tampil.'</button></a></td>
+
+				<td class="text-right" >
+				<a href="'.base_url().'admin/edit_wilayah/'.$row->id_wisata.'"> <button class="btn btn-primary btn-sm">Edit</button></a>
+					<a href="'.base_url().'admin/delete_wilayah/'.$row->id_wisata.'"> <button class="btn btn-danger btn-sm" name="delete" value="'.$row->id_wisata.'">delete</button></a></td>
 
 			 </tr>
 		 ';

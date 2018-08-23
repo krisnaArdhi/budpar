@@ -10,7 +10,7 @@ class Login extends CI_Controller
     }
 
      function index() {
-        $this->load->view('login');
+        $this->load->view('nimda/login');
     }
 
     function cek_login() {
@@ -21,7 +21,7 @@ class Login extends CI_Controller
             if ($cek->num_rows() > 0) {
                 //login berhasil, buat session
                 foreach ($cek->result() as $qad) {
-
+                    $sess_data['logged_in'] = 1;
                     $sess_data['email'] = $qad->email;
                     $sess_data['status'] = $qad->status;
 
