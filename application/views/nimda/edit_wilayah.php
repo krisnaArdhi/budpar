@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+      <?php include 'head.php';?>
+  </head>
+  <body class="">
+    <div class="page">
+      <div class="page-main">
+          <?php include 'header.php';?>
+          <?php include 'navbar.php';?>
+        <div class="my-3 my-md-5">
+          <div class="container">
+            <div class="page-header">
+              <h1 class="page-title">
+                Edit Wilayah
+              </h1>
+            </div>
+            <!-- #isi -->
+            <div class="col-12">
+              <form class="card" method="post" action="<?php echo base_url();?>fetch_admin/simpan_edit_wilayah">
+                              <div class="card-body">
+                                <div class="row">
+
+
+
+                                  <div class="col-md-9">
+                                    <div class="form-group">
+                                      <label class="form-label">Wilayah</label>
+                                      <?php
+                                      if (empty($edit_wilayah))
+                                      {
+                                        echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
+                                      }else
+                                      {
+                                         foreach ($edit_wilayah as $isi)
+                                      {
+                                      ?>
+                                      <input type="text" class="form-control" name="nama_wilayah" placeholder="Home Address" value="<?php echo $isi['nama_wilayah'];?>">
+                                      <input type="text" class="form-control" name="id_wilayah" placeholder="Home Address" hidden value="<?php echo $isi['id_wilayah'];?>">
+                                      <?php
+                                       }}
+                                       ?>
+                                    </div>
+                                  </div>
+
+
+
+                                </div>
+                              </div>
+                              <div class="card-footer text-right">
+                                <button type="submit" name="mysubmit" class="btn btn-primary">Update Wilayah</button>
+                              </div>
+                            </form>
+            </div>
+            <!-- /#isi -->
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col-6 col-md-3">
+                  <ul class="list-unstyled mb-0">
+                    <li><a href="#">First link</a></li>
+                    <li><a href="#">Second link</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <ul class="list-unstyled mb-0">
+                    <li><a href="#">Third link</a></li>
+                    <li><a href="#">Fourth link</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <ul class="list-unstyled mb-0">
+                    <li><a href="#">Fifth link</a></li>
+                    <li><a href="#">Sixth link</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md-3">
+                  <ul class="list-unstyled mb-0">
+                    <li><a href="#">Other link</a></li>
+                    <li><a href="#">Last link</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+              Premium and Open Source dashboard template with responsive and high quality UI. For Free!
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container">
+          <div class="row align-items-center flex-row-reverse">
+            <div class="col-auto ml-lg-auto">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <ul class="list-inline list-inline-dots mb-0">
+                    <li class="list-inline-item"><a href="./docs/index.html">Documentation</a></li>
+                    <li class="list-inline-item"><a href="./faq.html">FAQ</a></li>
+                  </ul>
+                </div>
+                <div class="col-auto">
+                  <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">Source code</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+              Copyright © 2018 <a href=".">Tabler</a>. Theme by <a href="https://codecalm.net" target="_blank">codecalm.net</a> All rights reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+<script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"<?php echo base_url(); ?>fetch_admin/fetch_pesan",
+   method:"POST",
+   data:{query:query},
+   success:function(data){
+    $('#result').html(data);
+   }
+  })
+ }
+
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>

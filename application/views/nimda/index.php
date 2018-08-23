@@ -6,8 +6,8 @@
   <body class="">
     <div class="page">
       <div class="page-main">
-          <?php include 'header.php';?> 
-          <?php include 'navbar.php';?> 
+          <?php include 'header.php';?>
+          <?php include 'navbar.php';?>
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
@@ -19,75 +19,42 @@
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-green">
-                      6%
-                      <i class="fe fe-chevron-up"></i>
-                    </div>
-                    <div class="h1 m-0">43</div>
-                    <div class="text-muted mb-4">New Tickets</div>
+
+                    <div class="h1 m-0"><?php echo $jml_pesan;?></div>
+                    <div class="text-muted mb-4">Pesan Baru</div>
                   </div>
                 </div>
               </div>
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-red">
-                      -3%
-                      <i class="fe fe-chevron-down"></i>
-                    </div>
-                    <div class="h1 m-0">17</div>
-                    <div class="text-muted mb-4">Closed Today</div>
+
+                    <div class="h1 m-0"><?php echo $ttl_pesan;?></div>
+                    <div class="text-muted mb-4">Total Pesan</div>
                   </div>
                 </div>
               </div>
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-green">
-                      9%
-                      <i class="fe fe-chevron-up"></i>
-                    </div>
-                    <div class="h1 m-0">7</div>
-                    <div class="text-muted mb-4">New Replies</div>
+
+                    <div class="h1 m-0"><?php echo $jml_artikel;?></div>
+                    <div class="text-muted mb-4">Artikel</div>
                   </div>
                 </div>
               </div>
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-green">
-                      3%
-                      <i class="fe fe-chevron-up"></i>
-                    </div>
-                    <div class="h1 m-0">27.3K</div>
-                    <div class="text-muted mb-4">Followers</div>
+
+                    <div class="h1 m-0"><?php echo $jml_wisata;?></div>
+                    <div class="text-muted mb-4">Objek Wisata</div>
                   </div>
                 </div>
               </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="text-right text-red">
-                      -2%
-                      <i class="fe fe-chevron-down"></i>
-                    </div>
-                    <div class="h1 m-0">$95</div>
-                    <div class="text-muted mb-4">Daily Earnings</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="text-right text-red">
-                      -1%
-                      <i class="fe fe-chevron-down"></i>
-                    </div>
-                    <div class="h1 m-0">621</div>
-                    <div class="text-muted mb-4">Products</div>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="row row-cards">
+
               <div class="col-lg-6">
                 <div class="card">
                   <div class="card-header">

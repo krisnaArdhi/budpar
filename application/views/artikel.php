@@ -81,11 +81,8 @@
 								 foreach ($post as $isi)
 							{
 							?>
-							<div class="col-md-6">
-								<div class="about-img animate-box" data-animate-effect="fadeInLeft" style="background-image: url(<?php echo base_url();?>assets/awal/images/img_bg_2.jpg);">
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+
+							<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 								<div class="about-desc">
 									<span class="heading-meta">Seputar Nabire</span>
 									<span><small><?php echo $isi->created_at;?></small></span>

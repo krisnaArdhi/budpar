@@ -13,6 +13,7 @@
             <div class="page-header">
               <h1 class="page-title">
                 Daftar Wisata
+
               </h1>
               <button class="btn btn-primary"  data-toggle="modal" data-target="#contohModalKecil">
                   Tambah</button>
@@ -106,42 +107,16 @@
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Tambah data wisata</h4>
+              <h4 class="modal-title" id="myModalLabel">Tambah data wilayah</h4>
             </div>
             <div class="modal-body">
-              <form method="post" action="<?php echo base_url();?>fetch_admin/tambah_wisata">
+              <form method="post" action="<?php echo base_url();?>fetch_admin/tambah_wilayah">
               <div class="card">
                   <div class="card-body card-block">
-                    <div class="row form-group">
-                            <label for="selectSm" class=" form-control-label">Lokasi Wisata</label>
-                            <select name="id_wilayah" id="SelectLm" class="form-control-sm form-control">
-                                <option value="0">Please select</option>
-                                <?php
-                                if (empty($wilayah))
-                                {
-                                  echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
-                                }else
-                                {
-                                   foreach ($wilayah as $isi)
-                                {
-                                ?>
-                                <option value="<?php echo $isi->id_wilayah?>"><?php echo $isi->nama_wilayah?></option>
-                                <?php
-                                 }}
-                                 ?>
-                            </select>
-                    </div>
+
                       <div class="form-group">
-                          <label for="vat" class=" form-control-label">Nama Wisata</label>
-                          <input type="text" id="vat" name="nama_wisata" placeholder="masukan nama wisata" class="form-control">
-                      </div>
-                      <div class="form-group">
-                          <label for="street" class=" form-control-label">Deskripsi</label>
-                          <input type="text" id="street" name="deskripsi" placeholder="masukan deskripsi tentang objek wisata" class="form-control">
-                      </div>
-                      <div class="form-group">
-                          <label for="street" class=" form-control-label">Foto</label>
-                          <input type="text" id="street" name="foto" placeholder="masukan foto" class="form-control">
+                          <label for="street" class=" form-control-label">Nama Wilayah</label>
+                          <input type="text" id="street" name="nama_wilayah" placeholder="masukan lokasi wilayah" class="form-control">
                       </div>
                   </div>
                   <div class="card-footer">
@@ -167,7 +142,7 @@ $(document).ready(function(){
  function load_data(query)
  {
   $.ajax({
-   url:"<?php echo base_url(); ?>fetch_admin/fetch_wisata",
+   url:"<?php echo base_url(); ?>fetch_admin/fetch_wilayah",
    method:"POST",
    data:{query:query},
    success:function(data){

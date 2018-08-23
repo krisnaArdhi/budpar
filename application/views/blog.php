@@ -103,7 +103,7 @@
 									<div class="desc">
 										<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
 										<h3><a href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri;?>"><?php echo $isi->judul;?></a></h3>
-										<p><?php echo word_limiter($isi->artikel,30);?></p>
+										<p><?php echo word_limiter($isi->artikel,2);?></p>
 										<p class="icon" >
 											<span><a style="color:black;" href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri?>"><i class="icon-eye"></i> More...</a></span>
 										</p>
@@ -120,22 +120,7 @@
 					</div>
 				</div>
 
-				<div id="get-in-touch" class="colorlib-bg-color">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<h2>For more information ?</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<p class="colorlib-lead">don't hesitate to contact us</p>
-								<p><a href="<?php echo base_url()?>contact" class="btn btn-primary btn-learn">Contact us!</a></p>
-							</div>
-
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	<!-- jQuery -->

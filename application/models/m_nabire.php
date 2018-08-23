@@ -7,6 +7,12 @@
     parent::__construct();
    }
 
+   public function kirim_pesan($data)
+   {
+       $hasil=$this->db->insert('pesan',$data);
+
+     return $hasil;
+   }
    function get_wisata_list($limit, $start){
         $query = $this->db->get('wisata', $limit, $start);
         return $query;
