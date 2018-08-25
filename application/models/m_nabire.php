@@ -7,6 +7,12 @@
     parent::__construct();
    }
 
+   public function kirim_pesan($data)
+   {
+       $hasil=$this->db->insert('pesan',$data);
+
+     return $hasil;
+   }
    function get_wisata_list($limit, $start){
         $query = $this->db->get('wisata', $limit, $start);
         return $query;
@@ -36,7 +42,7 @@
      function tampil_wisata()
      // nampilin data slide wisata di index
       {
-        $this->db->like('tampil',"1");
+        $this->db->where('tampil',"tampil");
         $query = $this->db->get('wisata');
         return $query->result();
       }
