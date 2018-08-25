@@ -7,6 +7,18 @@
     parent::__construct();
    }
 
+       function tampil_wisata($id_wisata)
+         {
+           $this->db->where('id_wisata',$id_wisata);
+             $hasil=$this->db->update('wisata',array('tampil'=>'tampil') );
+
+         }
+         function tidak_tampil_wisata($id_wisata)
+           {
+             $this->db->where('id_wisata',$id_wisata);
+               $hasil=$this->db->update('wisata',array('tampil'=>'tidak-tampil') );
+
+           }
 
        function jml_pesan()
        {
@@ -16,6 +28,7 @@
          $total = $query->num_rows();
          return $total;
         }
+
         function ttl_pesan()
         {
           $query = $this->db->get('pesan');

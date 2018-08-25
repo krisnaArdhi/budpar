@@ -43,8 +43,11 @@ $route['admin/post/(:any)'] = 'post/$1';
 $route['admin'] = 'admin/pages';
 $route['pesan/(:any)'] = 'Contact/$1';
 
-$route['pesan/baca/(:any)'] = 'fetch_admin/baca_pesan';
-$route['pesan/delete'] = 'fetch_admin/delete_pesan';
+$route['contact_us/baca/(:any)'] = 'fetch_admin/baca_pesan/$1';
+$route['contact_us/delete'] = 'fetch_admin/delete_pesan';
+$route['contact_us/send_mail'] = 'fetch_admin/send_mail';
+$route['contact_us/balas/(:any)'] = 'fetch_admin/balas_pesan/$1';
+
 
 
 $route['admin/(:any)'] = 'admin/pages/$1';

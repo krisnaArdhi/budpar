@@ -177,7 +177,7 @@ class Fetch_admin extends CI_Controller {
 			 <tr>
 				<td>'.$row->nama_wisata.'</td>
 				<td>'.$row->nama_wilayah.'</td>
-				<td><a href="'.base_url().'admin/edit_wilayah/'.$row->id_wisata.'"> <button class="btn btn-primary btn-sm">'.$row->tampil.'</button></a></td>
+				<td><a href="'.base_url().'fetch_admin/tampil_wisata/'.$row->id_wisata.'/'.$row->tampil.'"> <button class="btn btn-primary btn-sm">'.$row->tampil.'</button></a></td>
 
 				<td class="text-right" >
 				<a href="'.base_url().'admin/edit_wilayah/'.$row->id_wisata.'"> <button class="btn btn-primary btn-sm">Edit</button></a>
@@ -232,8 +232,8 @@ class Fetch_admin extends CI_Controller {
 				<td>'.$row->pesan.'</td>
 				<td>'.$row->tanggal.'</td>
 
-				<td class="text-right" ><a href="'.base_url().'pesan/baca/'.$row->id_pesan.'"> <button class="btn btn-primary btn-sm">
-					Baca</button></a><a href="'.base_url().'pesan/delete/'.$row->id_pesan.'"> <button class="btn btn-danger btn-sm" name="delete" value="'.$row->id_pesan.'">
+				<td class="text-right" ><a href="'.base_url().'contact_us/baca/'.$row->id_pesan.'"> <button class="btn btn-primary btn-sm">
+					Baca</button></a><a href="'.base_url().'contact_us/delete/'.$row->id_pesan.'"> <button class="btn btn-danger btn-sm" name="delete" value="'.$row->id_pesan.'">
 						delete</button></a></td>
 
 			 </tr>
@@ -252,18 +252,50 @@ class Fetch_admin extends CI_Controller {
 
 	public function baca_pesan()
 	{
-		// $id_pesan = $this->uri->segment(3);
-		// $hasil=$this->m_admin->terima_pesan($id_pesan);
- 	 // if ($hasil){
-		//  $data['jml_pesan']  = $this->m_admin->jml_pesan();
-		//  $data['data_pesan']  = $this->m_admin->isi_pesan($id_pesan);
-		//  $this->load->view('nimda/isi_pesan',$data);
- 	 // }else{
-		//  $data['jml_pesan']  = $this->m_admin->jml_pesan();
- 		// $data['data_pesan']  = $this->m_admin->isi_pesan($id_pesan);
- 		// $this->load->view('nimda/isi_pesan',$data);
- 	 // }
-	 echo "string";
+		$id_pesan = $this->uri->segment(3);
+		$hasil=$this->m_admin->terima_pesan($id_pesan);
+ 	 if ($hasil){
+		 $data['id_pesan']  = $id_pesan;
+		 $data['jml_pesan']  = $this->m_admin->jml_pesan();
+		 $data['data_pesan']  = $this->m_admin->isi_pesan($id_pesan);
+		 $this->load->view('nimda/isi_pesan',$data);
+ 	 }else{
+		 $data['id_pesan']  = $id_pesan;
+		 $data['jml_pesan']  = $this->m_admin->jml_pesan();
+ 		$data['data_pesan']  = $this->m_admin->isi_pesan($id_pesan);
+ 		$this->load->view('nimda/isi_pesan',$data);
+ 	 }
+ 	}
+
+		public function balas_pesan()
+		{
+			$id_pesan = $this->uri->segment(3);
+			$hasil=$this->m_admin->terima_pesan($id_pesan);
+	 	 if ($hasil){
+			 $data['jml_pesan']  = $this->m_admin->jml_pesan();
+			 $data['data_pesan']  = $this->m_admin->isi_pesan($id_pesan);
+			 $this->load->view('nimda/balas_pesan',$data);
+	 	 }else{
+			 $data['jml_pesan']  = $this->m_admin->jml_pesan();
+	 		$data['data_pesan']  = $this->m_admin->isi_pesan($id_pesan);
+	 		$this->load->view('nimda/balas_pesan',$data);
+	 	 }
+	 	}
+	public function tampil_wisata()
+	{
+		$id_wisata = $this->uri->segment(3);
+		$status = $this->uri->segment(4);
+ 	 if ($status == "tampil"){
+		 $this->m_admin->tidak_tampil_wisata($id_wisata);
+			redirect('admin/wisata');
+
+
+ 	 }else{
+		$this->m_admin->tampil_wisata($id_wisata);
+		 redirect('admin/wisata');
+
+
+ 	 }
  	}
 
 	function delete_wilayah()
@@ -319,6 +351,41 @@ class Fetch_admin extends CI_Controller {
 						$this->load->view('tambahpetugas');
 					}
 					}
+
+					public function send_mail() {
+
+         $from_email = "emailkamu@gmail.com";
+         $to_email = $this->input->post('email');
+				 $pesan = $this->input->post('pesan');
+				 $subject = $this->input->post('subject');
+
+
+         $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => $from_email,
+                'smtp_pass' => 'xxx',
+                'mailtype'  => 'html',
+                'charset'   => 'iso-8859-1'
+        );
+
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+
+         $this->email->from($from_email, 'disbudpar');
+         $this->email->to($to_email);
+         $this->email->subject($subject);
+         $this->email->message($pesan);
+
+         //Send mail
+         if($this->email->send()){
+                $this->session->set_flashdata("notif","Email berhasil terkirim.");
+         }else {
+                $this->session->set_flashdata("notif","Email gagal dikirim.");
+                $this->load->view(‘home’);
+         }
+      }
 
 
 
