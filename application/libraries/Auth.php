@@ -7,7 +7,7 @@ class Auth
 	{
 		$this->CI = &get_instance();
 	}
-	
+
 	// cek apakah user login apa belum
 	function is_logged_in()
 	{
@@ -17,13 +17,13 @@ class Auth
 		}
 		return FALSE;
 	}
-	
+
 	// validasi di setiap halaman yang mengharuskan autentikasi
 	function restrict()
-	{	
+	{
 		if($this->is_logged_in() === FALSE)
 		{
-			redirect(base_url().'login/login');
+			redirect(base_url().'login');
 		}
 	}
 }

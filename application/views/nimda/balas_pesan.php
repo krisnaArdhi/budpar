@@ -15,7 +15,7 @@
             <div class="col-lg-12">
               <div class="card">
                <div class="card-header">
-                 <h3 class="card-title">pesan masuk via contact us</h3>
+                 <h3 class="card-title">Tulis pesan</h3>
                </div>
                <div class="card-body">
                  <?php
@@ -27,26 +27,26 @@
                     foreach ($data_pesan as $isi)
                  {
                  ?>
-                 <form action="<?php echo base_url();?>contact_us/balas/<?php echo $isi->id_pesan;?>">
+                 <form action="<?php echo base_url();?>contact_us/send_mail">
                    <div class="form-group">
                      <div class="row align-items-center">
-                       <label class="col-sm-2">Dari : </label>
+                       <label class="col-sm-2">To : </label>
                        <div class="col-sm-10">
-                         <input type="text" value="<?php echo $isi->email;?>" class="form-control">
+                         <input type="text" name="email" value="<?php echo $isi->email;?>" class="form-control">
                        </div>
                      </div>
                    </div>
                    <div class="form-group">
                      <div class="row align-items-center">
-                       <label class="col-sm-2">Nama : </label>
+                       <label class="col-sm-2">Subject : </label>
                        <div class="col-sm-10">
-                         <input type="text" value="<?php echo $isi->nama;?>" class="form-control">
+                         <input type="text"class="form-control">
                        </div>
                      </div>
                    </div>
-                   <textarea rows="10" class="form-control" disabled> <?php echo $isi->pesan;?></textarea>
+                   <textarea rows="10" class="form-control" ></textarea>
                    <div class="btn-list mt-4 text-right">
-                     <button type="submit" class="btn btn-primary btn-space">Balas</button>
+                     <button type="submit" class="btn btn-primary btn-space">Kirim</button>
                    </div>
                  </form>
                  <?php

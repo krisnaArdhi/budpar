@@ -12,11 +12,28 @@
             <div class="container">
               <div class="page-header">
                 <h1 class="page-title">
-                  Daftar Wisata
+                  Daftar pesan masuk via contact us
                 </h1>
               </div>
               <!-- #isi -->
-              <div class="col-12">
+              <div class="row">
+                <div class="col-md-3">
+                <div>
+                  <div class="list-group list-group-transparent mb-0">
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                      <span class="icon mr-3"><i class="fe fe-inbox"></i></span>Semua <span class="ml-auto badge badge-primary"><?php echo $ttl_pesan;?></span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                      <span class="icon mr-3"><i class="fe fe-inbox"></i></span>Belum Dibaca <span class="ml-auto badge badge-primary"><?php echo $jml_pesan;?></span>
+                    </a>
+                    
+                  </div>
+                  <div class="mt-6">
+                    <a href="#" class="btn btn-secondary btn-block">Compose new Email</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9">
                 <div class="input-group">
 
                               <input class="form-control" name="search_text" id="search_text" placeholder="Search for email" type="text">
@@ -37,6 +54,7 @@
                   </div>
                 </div>
               </div>
+            </div>
               <!-- /#isi -->
             </div>
           </div>
