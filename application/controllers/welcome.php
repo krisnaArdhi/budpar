@@ -57,7 +57,7 @@ class Welcome extends CI_Controller {
 			 $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 			 //panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model.
-			 $data['data'] = $this->m_nabire->get_wisata_list($config["per_page"], $data['page']);
+			$data['data'] = $this->m_nabire->get_wisata_list($config["per_page"], $data['page']);
 
 			 $data['pagination'] = $this->pagination->create_links();
 

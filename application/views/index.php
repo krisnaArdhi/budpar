@@ -34,7 +34,7 @@
 						<?php
 						if (empty($wisata))
 						{
-							echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
+							echo "<tr><td colspan=\"6\">Wisata tidak tersedia</td></tr>";
 						}else
 						{
 							 foreach ($wisata as $isi)

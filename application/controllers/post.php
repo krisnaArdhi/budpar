@@ -93,7 +93,7 @@ class Post extends CI_Controller{
 
     public function textImage(){
         if(isset($_FILES["file"]["name"])){
-          $dir = site_url().'assets/images/posts/newpost';
+          $dir = site_url().'assets/images/posts/';
           $config['upload_path'] = './assets/images/posts/newpost/';
           $config['allowed_types'] = 'jpg|jpeg|png|gif';
           $this->load->library('upload', $config);
