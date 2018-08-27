@@ -1,11 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Wisata extends CI_Controller {
 	function __construct(){
  parent::__construct();
  $this->load->model('m_nabire');
  $this->load->library('pagination');
-
  }
 	/**
 	 * Index Page for this controller.
@@ -24,9 +23,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-
 		//konfigurasi pagination
-			 $config['base_url'] = site_url('welcome/index'); //site url
+			 $config['base_url'] = site_url('wisata/index'); //site url
 			 $config['total_rows'] = $this->db->count_all('wisata'); //total row
 			 $config['per_page'] = 4;  //show record per halaman
 			 $config["uri_segment"] = 3;  // uri parameter
@@ -61,14 +59,22 @@ class Welcome extends CI_Controller {
 
 			 $data['pagination'] = $this->pagination->create_links();
 
-		$data['wisata']= $this->m_nabire->tampil_wisata();
-		$data['jml_artikel']= $this->m_nabire->jml_artikel();
-		$data['jml_wisata']= $this->m_nabire->jml_wisata();
-		$data['post']= $this->m_nabire->post();
-
-		$this->load->view('index',$data);
+		// $data['wisata']= $this->m_nabire->wisata();
+		$this->load->view('wisata',$data);
 	}
 
+
+
+	public function content()
+	{
+		$uri= $this->uri->segment('3');
+		$data['wisata']= $this->m_nabire->content_wisata($uri);
+		$data['jml_artikel']= $this->m_nabire->jml_artikel();
+		$data['jml_wisata']= $this->m_nabire->jml_wisata();
+
+
+		$this->load->view('content_wisata',$data);
+	}
 
 
 

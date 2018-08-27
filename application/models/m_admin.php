@@ -7,6 +7,86 @@
     parent::__construct();
    }
 
+       function tampil_wisata($id_wisata)
+         {
+           $this->db->where('id_wisata',$id_wisata);
+             $hasil=$this->db->update('wisata',array('tampil'=>'tampil') );
+
+         }
+         function tidak_tampil_wisata($id_wisata)
+           {
+             $this->db->where('id_wisata',$id_wisata);
+               $hasil=$this->db->update('wisata',array('tampil'=>'tidak-tampil') );
+
+           }
+
+       function jml_pesan()
+       {
+
+         $this->db->where('status',"0");
+         $query = $this->db->get('pesan');
+         $total = $query->num_rows();
+         return $total;
+        }
+
+        function ttl_pesan()
+        {
+          $query = $this->db->get('pesan');
+          $total = $query->num_rows();
+          return $total;
+         }
+         function jml_wisata()
+         {
+           $query = $this->db->get('wisata');
+           $total = $query->num_rows();
+           return $total;
+         }function jml_artikel()
+          {
+            $query = $this->db->get('posts');
+            $total = $query->num_rows();
+            return $total;
+           }
+        function data_pesan()
+        {
+
+          // $this->db->where('status',"0");
+          $this->db->like('status',"0");
+           $this->db->or_like('status',"1");
+          $query = $this->db->get('pesan');
+          $total = $query->result();
+          return $total;
+         }
+
+         function fetch_data_pesan($query)
+         {
+          $this->db->select("*");
+          $this->db->from("pesan");
+          if($query != '')
+          {
+            $this->db->like('email', $query);
+
+          }
+          $this->db->order_by('id_pesan', 'DESC');
+          return $this->db->get();
+         }
+
+         function terima_pesan($id_pesan)
+         {
+
+           $this->db->where('id_pesan',$id_pesan);
+           $query = $this->db->update('pesan',array('status'=>'1'));
+
+
+          }
+         function isi_pesan($id_pesan)
+         {
+
+           $this->db->where('id_pesan',$id_pesan);
+           $query = $this->db->get('pesan');
+           $total = $query->result();
+           return $total;
+          }
+
        function wisata()
         {
           $this->db->join('wilayah','wisata.id_wilayah=wilayah.id_wilayah');
@@ -45,6 +125,18 @@
           return $this->db->get();
          }
 
+         function fetch_data_edit_wilayah($query)
+         {
+          $this->db->select("*");
+          $this->db->from("wilayah");
+          if($query != '')
+          {
+           $this->db->like('id_wilayah', $query);
+          }
+          $this->db->order_by('id_wilayah', 'DESC');
+          return $this->db->get();
+         }
+
          function fetch_data_wisata($query)
          {
          $this->db->join('wilayah','wisata.id_wilayah=wilayah.id_wilayah');
@@ -73,13 +165,7 @@
           }
 
 
-          public function GetCatSearchName($search_name)
-          {
-            $qry = $this->db->select('*')->from('wilayah')
-                            ->where("nama_wilayah LIKE '%$search_name%'")
-                            ->get()->result(); // select data like rearch value.
-            return $qry;
-            }
+
 
             function delete_wilayah($id)
       {
