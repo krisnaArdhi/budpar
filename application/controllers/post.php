@@ -24,8 +24,9 @@ class Post extends CI_Controller{
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('nimda/posts/create');
+            mkdir('./assets/images/posts/newpost',0777);
         } else{
-            $config['upload_path'] = './assets/images/posts/';
+            $config['upload_path'] = './assets/images/posts/newpost';
             $config['allowed_types'] = 'gif|jpg|png|';
             $config['max_size'] = '2048';
             
@@ -41,6 +42,8 @@ class Post extends CI_Controller{
 
 
             $this->post_model->create_post($post_image);
+            $uri = url_title($this->input->post('judul'));
+            rename('./assets/images/posts/newpost', './assets/images/posts/'.$uri);
             redirect('admin/post');
         }
     }
@@ -90,7 +93,8 @@ class Post extends CI_Controller{
 
     public function textImage(){
         if(isset($_FILES["file"]["name"])){
-          $config['upload_path'] = './assets/images/posts/textImg/';
+          $dir = site_url().'assets/images/posts/newpost';
+          $config['upload_path'] = './assets/images/posts/newpost/';
           $config['allowed_types'] = 'jpg|jpeg|png|gif';
           $this->load->library('upload', $config);
           if(!$this->upload->do_upload('file')){
@@ -98,6 +102,8 @@ class Post extends CI_Controller{
               return FALSE;
           } else{
               $this->upload->data();
+              symlink('./assets/images/posts/newpost/'.$_FILES['file']['name'],'./assets/images/posts/textImg/'.$_FILES['file']['name']);
+
               echo base_url().'assets/images/posts/textImg/'.$_FILES['file']['name'];
           }
         }

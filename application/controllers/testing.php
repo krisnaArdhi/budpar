@@ -20,6 +20,7 @@ class testing extends CI_Controller{
             if (!is_dir($dirname)){
                 #mkdir('.assets/testing/'.$dirname);
                 mkdir($dirname,0777,true);
+                symlink($dirname,'./assets/testing/hahaha');
             }else{
                 echo 'exist';
             }

@@ -26,7 +26,7 @@
             <div class="col-lg-12">
                 <div class="card card-aside" style="min-height:300px">
                 <?php if ($post['post_image'] !== 'noimage.jpg') : ?>
-                <div class="card-aside-column" style="background-image: url(<?php echo site_url();?>assets/images/posts/<?php echo $post['post_image']?>); height:auto"></div>
+                <div class="card-aside-column" style="background-image: url(<?php echo site_url();?>assets/images/posts/<?php echo $post['uri'];?>/<?php echo $post['post_image']?>); height:auto"></div>
                 <?php endif;?>
                     <div class="card-body d-flex flex-column">
                         <div class="alert alert-warning alert-dismissible" id="del<?php echo $post['id'];?>" style="display:none">
