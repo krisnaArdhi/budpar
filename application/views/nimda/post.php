@@ -34,7 +34,7 @@
                             Delete post: <?php echo $post['judul'];?>?
                             </p>
                             <div class="btn-list">
-                              <?php echo form_open('post/delete/'.$post['id']);?>
+                              <?php echo form_open('post/delete/'.$post['uri']);?>
                                   <input class="btn btn-danger" type="submit" value="Delete">
                                   <button class="btn btn-secondary ml-2" data-dismiss="alert" type="button">Batal</button>
                               </form>

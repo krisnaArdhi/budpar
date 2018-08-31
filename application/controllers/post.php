@@ -48,9 +48,9 @@ class Post extends CI_Controller{
         }
     }
 
-    public function delete($id){
+    public function delete($uri){
         $this->load->helper('form');
-        $this->post_model->delete($id);
+        $this->post_model->delete($uri);
         redirect('admin/post');
 
     }
@@ -93,8 +93,8 @@ class Post extends CI_Controller{
 
     public function textImage(){
         if(isset($_FILES["file"]["name"])){
-          $dir = site_url().'assets/images/posts/';
-          $config['upload_path'] = './assets/images/posts/newpost/';
+          //$imgfile = fopen('./assets/images/posts/newpost/img.txt','a+');
+          $config['upload_path'] = './assets/images/posts/textImage/';
           $config['allowed_types'] = 'jpg|jpeg|png|gif';
           $this->load->library('upload', $config);
           if(!$this->upload->do_upload('file')){
@@ -102,9 +102,9 @@ class Post extends CI_Controller{
               return FALSE;
           } else{
               $this->upload->data();
-              symlink('./assets/images/posts/newpost/'.$_FILES['file']['name'],'./assets/images/posts/textImg/'.$_FILES['file']['name']);
+              file_put_contents('./assets/images/posts/newpost/img.txt',$_FILES['file']['name']."\n",FILE_APPEND);
 
-              echo base_url().'assets/images/posts/textImg/'.$_FILES['file']['name'];
+              echo base_url().'assets/images/posts/textImage/'.$_FILES['file']['name'];
           }
         }
     }

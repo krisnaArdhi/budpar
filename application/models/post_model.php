@@ -29,9 +29,9 @@ class Post_model extends CI_Model {
         return $this->db->insert('posts', $data);
     }
     
-    public function delete($id){
+    public function delete($uri){
 
-        $this->db->where('id',$id);
+        $this->db->where('uri',$uri);
         $this->db->delete('posts');
         
         return true;
