@@ -31,7 +31,7 @@
                 <div class="col-12">
                     <?php echo validation_errors();?>
                     <?php $attributes = array('class' => 'card');?>
-                    <?php echo form_open_multipart('post/update',$attributes);?>
+                    <?php echo form_open_multipart('post/update/'.$post['uri'],$attributes);?>
                     <div class="card-header">
                         <h3 class="card-title">Edit Post</h3>
                     </div>
@@ -152,7 +152,7 @@ requirejs(['jquery','bootstrap', 'summernote'], function(){
         $.ajax({
             data: data,
             type: "POST",
-            url: "<?php echo base_url();?>admin/post/textImage",
+            url: "<?php echo base_url();?>admin/post/textImageUpdate/<?php echo $post['uri'];?>",
             cache: false,
             contentType: false,
             processData: false,
