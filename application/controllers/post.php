@@ -24,8 +24,9 @@ class Post extends CI_Controller{
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('nimda/posts/create');
+            mkdir('./assets/images/posts/newpost',0777);
         } else{
-            $config['upload_path'] = './assets/images/posts/';
+            $config['upload_path'] = './assets/images/posts/newpost';
             $config['allowed_types'] = 'gif|jpg|png|';
             $config['max_size'] = '2048';
             
@@ -41,14 +42,22 @@ class Post extends CI_Controller{
 
 
             $this->post_model->create_post($post_image);
+            $uri = url_title($this->input->post('judul'));
+            rename('./assets/images/posts/newpost', './assets/images/posts/'.$uri);
             redirect('admin/post');
         }
     }
 
-    public function delete($id){
+    public function delete($uri){
         $this->load->helper('form');
-        $this->post_model->delete($id);
-        redirect('admin/post');
+        $this->post_model->delete($uri);
+        $imglist = file('./assets/images/posts/'.$uri.'/img.txt');
+        echo $imglist;
+        foreach ($imglist as $img) {
+            echo $img;
+            delete('./assets/images/posts/textImage/'.$img);
+            echo "berhasil";
+        }
 
     }
 
@@ -60,7 +69,7 @@ class Post extends CI_Controller{
 
     }
 
-    public function update(){
+    public function update($uri){
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -68,7 +77,9 @@ class Post extends CI_Controller{
         $this->form_validation->set_rules('artikel','Artikel','required');
 
         if ($this->form_validation->run()===TRUE){
-            $config['upload_path'] = './assets/images/posts/';
+            $newuri = url_title($this->input->post('judul'));
+            rename('./assets/images/posts/'.$uri,'./assets/images/posts/'.$newuri);
+            $config['upload_path'] = './assets/images/posts/'.$newuri;
             $config['allowed_types'] = 'gif|jpg|png|';
             $config['max_size'] = '2048';
             
@@ -90,7 +101,8 @@ class Post extends CI_Controller{
 
     public function textImage(){
         if(isset($_FILES["file"]["name"])){
-          $config['upload_path'] = './assets/images/posts/textImg/';
+          //$imgfile = fopen('./assets/images/posts/newpost/img.txt','a+');
+          $config['upload_path'] = './assets/images/posts/textImage/';
           $config['allowed_types'] = 'jpg|jpeg|png|gif';
           $this->load->library('upload', $config);
           if(!$this->upload->do_upload('file')){
@@ -98,10 +110,31 @@ class Post extends CI_Controller{
               return FALSE;
           } else{
               $this->upload->data();
-              echo base_url().'assets/images/posts/textImg/'.$_FILES['file']['name'];
+              file_put_contents('./assets/images/posts/newpost/img.txt',$_FILES['file']['name']."\n",FILE_APPEND);
+
+              echo base_url().'assets/images/posts/textImage/'.$_FILES['file']['name'];
           }
         }
     }
+
+    public function textImageUpdate($uri){
+        if(isset($_FILES["file"]["name"])){
+          //$imgfile = fopen('./assets/images/posts/newpost/img.txt','a+');
+          $config['upload_path'] = './assets/images/posts/textImage/';
+          $config['allowed_types'] = 'jpg|jpeg|png|gif';
+          $this->load->library('upload', $config);
+          if(!$this->upload->do_upload('file')){
+              $this->upload->display_errors();
+              return FALSE;
+          } else{
+              $this->upload->data();
+              file_put_contents('./assets/images/posts/'.$uri.'/img.txt',$_FILES['file']['name']."\n",FILE_APPEND);
+
+              echo base_url().'assets/images/posts/textImage/'.$_FILES['file']['name'];
+          }
+        }
+    }
+
 }
 
 

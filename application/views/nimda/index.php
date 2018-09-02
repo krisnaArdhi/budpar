@@ -6,8 +6,8 @@
   <body class="">
     <div class="page">
       <div class="page-main">
-          <?php include 'header.php';?> 
-          <?php include 'navbar.php';?> 
+          <?php include 'header.php';?>
+          <?php include 'navbar.php';?>
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
@@ -19,75 +19,42 @@
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-green">
-                      6%
-                      <i class="fe fe-chevron-up"></i>
-                    </div>
-                    <div class="h1 m-0">43</div>
-                    <div class="text-muted mb-4">New Tickets</div>
+
+                    <div class="h1 m-0"><?php echo $jml_pesan;?></div>
+                    <div class="text-muted mb-4">Pesan Baru</div>
                   </div>
                 </div>
               </div>
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-red">
-                      -3%
-                      <i class="fe fe-chevron-down"></i>
-                    </div>
-                    <div class="h1 m-0">17</div>
-                    <div class="text-muted mb-4">Closed Today</div>
+
+                    <div class="h1 m-0"><?php echo $ttl_pesan;?></div>
+                    <div class="text-muted mb-4">Total Pesan</div>
                   </div>
                 </div>
               </div>
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-green">
-                      9%
-                      <i class="fe fe-chevron-up"></i>
-                    </div>
-                    <div class="h1 m-0">7</div>
-                    <div class="text-muted mb-4">New Replies</div>
+
+                    <div class="h1 m-0"><?php echo $jml_artikel;?></div>
+                    <div class="text-muted mb-4">Artikel</div>
                   </div>
                 </div>
               </div>
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="text-right text-green">
-                      3%
-                      <i class="fe fe-chevron-up"></i>
-                    </div>
-                    <div class="h1 m-0">27.3K</div>
-                    <div class="text-muted mb-4">Followers</div>
+
+                    <div class="h1 m-0"><?php echo $jml_wisata;?></div>
+                    <div class="text-muted mb-4">Objek Wisata</div>
                   </div>
                 </div>
               </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="text-right text-red">
-                      -2%
-                      <i class="fe fe-chevron-down"></i>
-                    </div>
-                    <div class="h1 m-0">$95</div>
-                    <div class="text-muted mb-4">Daily Earnings</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="text-right text-red">
-                      -1%
-                      <i class="fe fe-chevron-down"></i>
-                    </div>
-                    <div class="h1 m-0">621</div>
-                    <div class="text-muted mb-4">Products</div>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="row row-cards">
+
               <div class="col-lg-6">
                 <div class="card">
                   <div class="card-header">
@@ -1595,65 +1562,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="row">
-                <div class="col-6 col-md-3">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="#">First link</a></li>
-                    <li><a href="#">Second link</a></li>
-                  </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="#">Third link</a></li>
-                    <li><a href="#">Fourth link</a></li>
-                  </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="#">Fifth link</a></li>
-                    <li><a href="#">Sixth link</a></li>
-                  </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="#">Other link</a></li>
-                    <li><a href="#">Last link</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mt-4 mt-lg-0">
-              Premium and Open Source dashboard template with responsive and high quality UI. For Free!
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="container">
-          <div class="row align-items-center flex-row-reverse">
-            <div class="col-auto ml-lg-auto">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="./docs/index.html">Documentation</a></li>
-                    <li class="list-inline-item"><a href="./faq.html">FAQ</a></li>
-                  </ul>
-                </div>
-                <div class="col-auto">
-                  <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">Source code</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-              Copyright © 2018 <a href=".">Tabler</a>. Theme by <a href="https://codecalm.net" target="_blank">codecalm.net</a> All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+    
     </div>
   </body>
 </html>

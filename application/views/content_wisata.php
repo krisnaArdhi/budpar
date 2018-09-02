@@ -23,7 +23,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> -->
 
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/awal/css/animate.css">
@@ -50,6 +50,7 @@
 
 	</head>
 	<body>
+		<body>
 		<div id="colorlib-page">
 			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 			<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
@@ -57,73 +58,89 @@
 				<nav id="colorlib-main-menu" role="navigation">
 					<ul>
 						<li><a href="<?php echo base_url()?>welcome">Home</a></li>
-						<li><a href="<?php echo base_url();?>wisata">Wisata Nabire</a></li>
-						<li><a href="<?php echo base_url();?>about">Tentang Kami</a></li>
-						<li  class="colorlib-active"><a href="<?php echo base_url();?>blog">Seputar Nabire</a></li>
-						<li><a href="<?php echo base_url();?>contact">Contact</a></li>
+						<li class="colorlib-active"><a href="<?php echo base_url()?>wisata">Wisata Nabire</a></li>
+						<li><a href="<?php echo base_url()?>about">Tentang Kami</a></li>
+						<li><a href="<?php echo base_url()?>blog">Seputar Nabire</a></li>
+						<li><a href="<?php echo base_url()?>contact">Contact</a></li>
 					</ul>
 				</nav>
-
-				<div class="colorlib-footer">
-					<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				<ul>
-						<li><a href="#"><i class="icon-facebook2"></i></a></li>
-						<li><a href="#"><i class="icon-twitter2"></i></a></li>
-						<li><a href="#"><i class="icon-instagram"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-					</ul>
-				</div>
 
 			</aside>
 
 			<div id="colorlib-main">
 
-				<div class="colorlib-blog">
+				<div class="colorlib-about">
 					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Blog</span>
-								<h2 class="colorlib-heading">Read Blog</h2>
-							</div>
-						</div>
-						<div class="row">
+						<div class="row row-bottom-padded-md">
 							<?php
-							if (empty($post))
+							if (empty($wisata))
 							{
-							  echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
+								echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
 							}else
 							{
-							   foreach ($post as $isi)
+								 foreach ($wisata as $isi)
 							{
 							?>
-							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="blog-entry">
-									<a href="blog.html" class="blog-img"><img src="images/blog-1.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-									<div class="desc">
-										<span><small><?php echo word_limiter($isi->created_at,1);?></small> 	</span>
-										<h3><a href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri;?>"><?php echo $isi->judul;?></a></h3>
-
-									</div>
+							<div class="col-md-6">
+								<div class="about-img animate-box" data-animate-effect="fadeInLeft" style="background-image: url(<?php echo base_url();?>assets/awal/images/<?php echo $isi->gambar;?>);">
 								</div>
 							</div>
+							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+								<div class="about-desc">
+									<span class="heading-meta">Wisata Nabire</span>
+
+									<h2 class="colorlib-heading"><?php echo $isi->nama_wisata;?></h2>
+									<?php echo $isi->keterangan;?>
+									</div>
+
+							</div>
 							<?php
-						   }}
-						   ?>
+							 }}
+							 ?>
+						</div>
+						<div class="row row-bottom-padded-md">
+							<?php foreach ($wisata as $isi) :?>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar;?>);">
+								</div>
+							</div>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar2;?>);">
+								</div>
+							</div>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar3;?>);">
+								</div>
+							</div>
+							<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar4;?>);">
+								</div>
+							</div>
+							<?php endforeach; ?>
 						</div>
 
+					</div>
+				</div>
 
 
+				<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(images/cover_bg_1.jpg);" data-stellar-background-ratio="0.5">
+					<div class="overlay"></div>
+					<div class="colorlib-narrow-content">
 						<div class="row">
-							<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-								<ul class="pagination">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">&raquo;</a></li>
-								</ul>
+						</div>
+						<div class="row">
+							<div class="col-md-6 text-center animate-box">
+								<span class="icon"><i class="flaticon-architect-with-helmet"></i></span>
+								<span class="colorlib-counter js-counter" data-from="0" data-to="<?php echo $jml_artikel;?>" data-speed="5000" data-refresh-interval="50"></span>
+								<span class="colorlib-counter-label"><a href="<?php echo base_url()?>wisata">Artikel</a></span>
 							</div>
+							<div class="col-md-6 text-center animate-box">
+								<span class="icon"><i class="flaticon-skyline"></i></span>
+
+								<span class="colorlib-counter js-counter" data-from="0" data-to="<?php echo $jml_wisata;?>" data-speed="5000" data-refresh-interval="50"></span>
+								<span class="colorlib-counter-label"><a href="<?php echo base_url()?>wisata">Wisata</a></span>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -132,13 +149,13 @@
 					<div class="colorlib-narrow-content">
 						<div class="row">
 							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<h2>Get in Touch!</h2>
+								<h2>For more information ?</h2>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<p class="colorlib-lead">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								<p><a href="#" class="btn btn-primary btn-learn">Contact me!</a></p>
+								<p class="colorlib-lead">don't hesitate to contact us</p>
+								<p><a href="<?php echo base_url()?>contact" class="btn btn-primary btn-learn">Contact us!</a></p>
 							</div>
 
 						</div>

@@ -6,54 +6,38 @@
   <body class="">
     <div class="page">
       <div class="page-main">
-          <?php include 'header.php';?> 
-          <?php include 'navbar.php';?> 
+          <?php include 'header.php';?>
+          <?php include 'navbar.php';?>
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
-              <div class="col-lg-8">
-                <h1 class="page-title">
-                    Posts
-                </h1>
-              </div>
-              <div class="col-lg-4 page-options text-right">
-                  <a class="btn btn-success btn-md" href="<?php echo base_url()?>admin/post/create">Buat Post  <i class="fe fe-plus"></i></a>
-              </div>
+              <h1 class="page-title">
+                Daftar Wisata
+
+              </h1>
+              <button class="btn btn-primary"  data-toggle="modal" data-target="#contohModalKecil">
+                  Tambah</button>
             </div>
             <!-- #isi -->
-            <div class="row row-cards row-deck">
-            <?php foreach ($posts as $post): ?>
-            <div class="col-lg-12">
-                <div class="card card-aside" style="min-height:300px">
-                <?php if ($post['post_image'] !== 'noimage.jpg') : ?>
-                <div class="card-aside-column" style="background-image: url(<?php echo site_url();?>assets/images/posts/<?php echo $post['uri'];?>/<?php echo $post['post_image']?>); height:auto"></div>
-                <?php endif;?>
-                    <div class="card-body d-flex flex-column">
-                        <div class="alert alert-warning alert-dismissible" id="del<?php echo $post['id'];?>" style="display:none">
-                            <p>
-                            Delete post: <?php echo $post['judul'];?>?
-                            </p>
-                            <div class="btn-list">
-                              <?php echo form_open('post/delete/'.$post['uri']);?>
-                                  <input class="btn btn-danger" type="submit" value="Delete">
-                                  <button class="btn btn-secondary ml-2" data-dismiss="alert" type="button">Batal</button>
-                              </form>
-                            </div>
-                        </div>
-                        <div class="card-header">
-                            <h4><?php echo $post['judul'];?></h4>
-                            <div class="card-options">
-                                <a class="btn btn-primary btn-sm" href="<?php echo base_url()?>admin/post/edit/<?php echo $post['uri'];?>">Edit Post</a>
-                                <button class="btn btn-danger btn-sm ml-2" onclick="deleteConfirm('<?php echo $post['id'];?>')">Delete</button>
-                            </div>
-                        </div>
-                        <div>
-                            <?php echo $post['artikel'];?>
-                        </div>
-                    </div>
+            <div class="col-12">
+              <div class="input-group">
+
+                            <input class="form-control" name="search_text" id="search_text" placeholder="Search for..." type="text">
+                            <span class="input-group-append">
+                              <button class="btn btn-primary" type="submit">Go!</button>
+                            </span>
+
+
                 </div>
-            </div>
-            <?php endforeach;?>
+
+
+
+              <div class="card">
+
+                <div class="table-responsive">
+                  <div id="result"></div>
+                </div>
+              </div>
             </div>
             <!-- /#isi -->
           </div>
@@ -119,10 +103,64 @@
         </div>
       </footer>
     </div>
-    <script>
-function deleteConfirm(id){
-    document.getElementById("del"+id).style.display = "block";
-}
-    </script>
+    <div class="modal fade" id="contohModalKecil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Tambah data wilayah</h4>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="<?php echo base_url();?>fetch_admin/tambah_wilayah">
+              <div class="card">
+                  <div class="card-body card-block">
+
+                      <div class="form-group">
+                          <label for="street" class=" form-control-label">Nama Wilayah</label>
+                          <input type="text" id="street" name="nama_wilayah" placeholder="masukan lokasi wilayah" class="form-control">
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <button type="submit" name="mysubmit" class="btn btn-primary btn-sm">
+                          <i class="fa fa-dot-circle-o"></i> Simpan
+                      </button>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                  </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
   </body>
 </html>
+<script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"<?php echo base_url(); ?>fetch_admin/fetch_wilayah",
+   method:"POST",
+   data:{query:query},
+   success:function(data){
+    $('#result').html(data);
+   }
+  })
+ }
+
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>

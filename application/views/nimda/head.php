@@ -16,6 +16,10 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+ 
     <script src="<?php echo site_url()?>assets/admin/assets/js/require.min.js"></script>
     <script>
       requirejs.config({
@@ -24,6 +28,7 @@
     </script>
 
     <!-- Dashboard Core -->
+
     <link href="<?php echo base_url()?>assets/admin/assets/css/dashboard.css" rel="stylesheet" />
     <script src="<?php echo base_url()?>assets/admin/assets/js/dashboard.js"></script>
     <!-- c3.js Charts Plugin -->
@@ -34,4 +39,3 @@
     <script src="<?php echo base_url()?>assets/admin/assets/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
     <script src="<?php echo base_url()?>assets/admin/assets/plugins/input-mask/plugin.js"></script>
- 

@@ -50,6 +50,7 @@
 
 	</head>
 	<body>
+		<body>
 		<div id="colorlib-page">
 			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 			<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
@@ -57,15 +58,13 @@
 				<nav id="colorlib-main-menu" role="navigation">
 					<ul>
 						<li><a href="<?php echo base_url()?>welcome">Home</a></li>
-						<li><a href="<?php echo base_url();?>wisata">Wisata Nabire</a></li>
+						<li  class="colorlib-active"><a href="<?php echo base_url();?>wisata">Wisata Nabire</a></li>
 						<li><a href="<?php echo base_url();?>about">Tentang Kami</a></li>
-						<li  class="colorlib-active"><a href="<?php echo base_url();?>blog">Seputar Nabire</a></li>
+						<li><a href="<?php echo base_url();?>blog">Seputar Nabire</a></li>
 						<li><a href="<?php echo base_url();?>contact">Contact</a></li>
 					</ul>
 				</nav>
-
 				<div class="colorlib-footer">
-					<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 				<ul>
 						<li><a href="#"><i class="icon-facebook2"></i></a></li>
 						<li><a href="#"><i class="icon-twitter2"></i></a></li>
@@ -77,53 +76,35 @@
 			</aside>
 
 			<div id="colorlib-main">
-
-				<div class="colorlib-blog">
+				<div class="colorlib-work">
 					<div class="colorlib-narrow-content">
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Blog</span>
-								<h2 class="colorlib-heading">Read Blog</h2>
+								<span class="heading-meta">Dinas Pariwisata Kab.Nabire</span>
+								<h2 class="colorlib-heading">Daftar Wisata Kab.nabire</h2>
 							</div>
 						</div>
-						<div class="row">
-							<?php
-							if (empty($post))
-							{
-							  echo "<tr><td colspan=\"6\">Data tidak tersedia</td></tr>";
-							}else
-							{
-							   foreach ($post as $isi)
-							{
-							?>
-							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="blog-entry">
-									<a href="blog.html" class="blog-img"><img src="images/blog-1.jpg" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+						<div class="row row-bottom-padded-md">
+							<?php foreach ($data->result() as $isi) :?>
+							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+								<div class="project" style="background-image: url(<?php echo base_url()?>assets/awal/images/<?php echo $isi->gambar;?>);">
 									<div class="desc">
-										<span><small><?php echo word_limiter($isi->created_at,1);?></small> 	</span>
-										<h3><a href="<?php echo base_url()?>blog/artikel/<?php echo $isi->uri;?>"><?php echo $isi->judul;?></a></h3>
-
+										<div class="con">
+											<h3><a href="work.html"><?php echo $isi->nama_wisata;?></a></h3>
+											<span><?php echo word_limiter($isi->keterangan,30);?></span>
+											<p class="icon">
+												<span><a href="<?php echo base_url()?>wisata/content/<?php echo $isi->uri?>"><i class="icon-eye"></i> More...</a></span>
+											</p>
+										</div>
 									</div>
 								</div>
 							</div>
-							<?php
-						   }}
-						   ?>
+							<?php endforeach; ?>
 						</div>
-
-
-
 						<div class="row">
-							<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-								<ul class="pagination">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">&raquo;</a></li>
-								</ul>
-							</div>
+
+								<?php echo $pagination; ?>
+
 						</div>
 					</div>
 				</div>
@@ -132,13 +113,13 @@
 					<div class="colorlib-narrow-content">
 						<div class="row">
 							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<h2>Get in Touch!</h2>
+								<h2>For more information ?</h2>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<p class="colorlib-lead">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								<p><a href="#" class="btn btn-primary btn-learn">Contact me!</a></p>
+								<p class="colorlib-lead">don't hesitate to contact us</p>
+								<p><a href="<?php echo base_url()?>contact" class="btn btn-primary btn-learn">Contact us!</a></p>
 							</div>
 
 						</div>

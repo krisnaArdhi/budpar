@@ -24,28 +24,28 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/css/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/css/icomoon.css">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/css/bootstrap.css">
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/css/flexslider.css">
 	<!-- Flaticons  -->
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/fonts/flaticon/font/flaticon.css">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/css/owl.theme.default.min.css">
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<?php base_url()?>assets/awal/css/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/respond.min.js"></script>
 	<![endif]-->
 
 	</head>
@@ -56,19 +56,15 @@
 			<h1 id="colorlib-logo"><a href="index.html">Balay</a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="work.html">Project</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li class="colorlib-active"><a href="contact.html">Contact</a></li>
+					<li><a href="<?php echo base_url()?>welcome">Home</a></li>
+					<li><a href="<?php echo base_url();?>wisata">Wisata Nabire</a></li>
+					<li><a href="<?php echo base_url();?>about">Tentang Kami</a></li>
+					<li><a href="<?php echo base_url();?>blog">Seputar Nabire</a></li>
+					<li class="colorlib-active"><a href="<?php echo base_url();?>contact">Contact</a></li>
 				</ul>
 			</nav>
 
 			<div class="colorlib-footer">
-				<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span> <span>Demo Images: <a href="http://nothingtochance.co/" target="_blank">nothingtochance.co</a></span></small></p>
 				<ul>
 					<li><a href="#"><i class="icon-facebook2"></i></a></li>
 					<li><a href="#"><i class="icon-twitter2"></i></a></li>
@@ -121,76 +117,54 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-7 col-md-push-1">
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
-									<form action="">
+									<form action="<?php echo base_url();?>pesan/kirim" method="post">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Name">
+											<input type="text" class="form-control" name="name" placeholder="Name">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Email">
+											<input type="text" name="email" class="form-control" placeholder="Email">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Subject">
+											<textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
 										</div>
 										<div class="form-group">
-											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-										</div>
-										<div class="form-group">
-											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message">
+											<input type="submit" class="btn btn-primary btn-send-message" name="mysubmit" value="Send Message">
 										</div>
 									</form>
 								</div>
-								
+
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div id="map"></div>	
 
-			<div id="get-in-touch" class="colorlib-bg-color">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<h2>Get in Touch!</h2>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<p class="colorlib-lead">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-							<p><a href="#" class="btn btn-primary btn-learn">Contact me!</a></p>
-						</div>
-						
-					</div>
-				</div>
-			</div>
+
+
 		</div>
 	</div>
 
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/jquery.flexslider-min.js"></script>
 	<!-- Sticky Kit -->
-	<script src="js/sticky-kit.min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/sticky-kit.min.js"></script>
 	<!-- Owl carousel -->
-	<script src="js/owl.carousel.min.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/owl.carousel.min.js"></script>
 	<!-- Counters -->
-	<script src="js/jquery.countTo.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
-	
-	
+	<script src="<?php base_url()?>assets/awal/js/jquery.countTo.js"></script>
+
+
 	<!-- MAIN JS -->
-	<script src="js/main.js"></script>
+	<script src="<?php base_url()?>assets/awal/js/main.js"></script>
 
 	</body>
 </html>
-

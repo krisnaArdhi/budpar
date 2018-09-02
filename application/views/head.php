@@ -32,7 +32,7 @@
 <!-- Flexslider  -->
 <link rel="stylesheet" href="<?php echo base_url()?>assets/awal/css/flexslider.css">
 <!-- Flaticons  -->
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="<?php echo base_url()?>assets/awal/fonts/flaticon/font/flaticon.css">
 <!-- Owl Carousel -->
 <link rel="stylesheet" href="<?php echo base_url()?>assets/awal/css/owl.carousel.min.css">
 <link rel="stylesheet" href="<?php echo base_url()?>assets/awal/css/owl.theme.default.min.css">
